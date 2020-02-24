@@ -15,7 +15,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-      <%= f.input :category, as: :hidden, input_html: { value: @patientOrDoctor } %>
+      <%= f.input :category, as: :hidden, input_html: { value: params[:doctor] } %>
 
   </div>
 
