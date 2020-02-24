@@ -1,14 +1,54 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<html class="html">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctorify: Find a doctor and book an appointment.</title>
+  <meta name="Keywords" content="Doctors directory, ginecologist, dentist, odontologist, radiology, orthopedist, dermatology, nutritionist, psychology">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light pl-8 fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top fas fa-user-md" alt="">
+      Doctorify
+    </a>
+    <span class="d-flex align-items-center">
+      <%= link_to new_user_session_path do %>
+        <button class="btn btn-sm btn-outline-secondary" type="button">log in</button>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <button class="btn btn-primary ml-3" type="button">Sign up</button>
+      <% end %>
+      <%= link_to "I'm a doctor", new_user_registration_path(doctor: "true"), class: "pl-2" %>
+    </span>
+  </nav>
+  <div class="main-container" style="background-image: url('https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80');">
+    <div class="container">
+      <h1>Book an appointment. <strong>Feel better</strong></h1>
+      <div class="form">
+        <form>
+          <div class="form-group col-sm-4 col-form-label">
+            <label for="specializationInput">I am looking for</label>
+            <input type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization">
+          </div>
+          <div class="form-group col-sm-4 col-form-label">
+            <label for="locationInput">Location</label>
+            <input type="text" class="form-control" id="locationInput2" placeholder="Palermo Soho, Buenos Aires">
+            <button type="submit" class="btn btn-primary my-4">Find doctors</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  <div class="footer-copyright">
+  </div>
+  </div>
+</body>
 
-<%= link_to "Sign up", new_user_registration_path(doctor: true) %>
-<%= link_to "log out", destroy_user_session_path %>
 
-<ul>
 
-<% @users.each do |doctors| %>
-<li>
-<%= doctors.email %>
-</li>
-<% end %>
-</ul>
