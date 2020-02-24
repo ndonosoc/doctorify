@@ -3,4 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :appointments, class_name: "Appointment", foreign_key: 'patient_id'
+  has_many :bookings, class_name: "Appointment", foreign_key: 'doctor_id'
 end
