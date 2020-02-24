@@ -12,7 +12,9 @@
     </a>
     <form class="form-inline">
       <button class="btn btn-sm btn-outline-secondary" type="button">log in</button>
-      <button class="btn btn-primary ml-3" type="button">Sign up</button>
+      <%= link_to "Sign up", new_user_registration_path(doctor: true) do %>
+        <button class="btn btn-primary ml-3" type="button">Sign up</button>
+      <% end %>
       <a href="#" class="stretched-link ml-3">I'm a doctor</a>
     </form>
   </nav>
@@ -45,3 +47,7 @@
   </div>
   </div>
 </body>
+
+
+<%= link_to "log out", destroy_user_session_path %>
+
