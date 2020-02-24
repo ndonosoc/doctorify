@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development
+  database: doctorify_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
