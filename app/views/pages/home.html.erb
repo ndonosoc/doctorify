@@ -3,3 +3,12 @@
 
 <%= link_to "Sign up", new_user_registration_path(doctor: true) %>
 <%= link_to "log out", destroy_user_session_path %>
+
+<ul>
+
+<% @users.each do |doctors| %>
+<li>
+<%= doctors.email %>
+</li>
+<% end %>
+</ul>
