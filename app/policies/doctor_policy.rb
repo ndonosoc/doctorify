@@ -4,6 +4,4 @@ class DoctorPolicy < ApplicationPolicy
       scope.where(category: true)
     end
   end
-
-
 end
