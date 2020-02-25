@@ -4,6 +4,7 @@ ruby '2.6.5'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
+gem 'omniauth-google-oauth2'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4.1'
@@ -18,6 +19,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+require 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
