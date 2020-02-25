@@ -1,9 +1,9 @@
 class DoctorsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
 
-skip_before_action :authenticate_user!, only: :index
+  def index
+    @doctors = policy_scope(User).order(created_at: :desc)
+  end
 
-def index
 end
 
-
-end
