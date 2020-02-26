@@ -3,7 +3,7 @@ const locationInput = document.getElementById("locationInput");
 const findDoctors = document.getElementById("findDoctors");
 
 const createSubmitUrl = () => {
-  findDoctors.setAttribute('href', `doctors?location=${locationInput.value}&specialization=${specializationInput.value}`)
+  findDoctors.setAttribute('href', `users?location=${locationInput.value}&specialization=${specializationInput.value}`)
 }
 
 if (findDoctors) {
