@@ -87,7 +87,7 @@
         <div class="form-groups mb-3">
         <% current_user.appointments.each do |appointment| %>
           <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %></p>
-          <% if appointment.patient == current_user %>
+          <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now %>
             <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
           <% end %>
         <% end %>
