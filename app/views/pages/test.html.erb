@@ -1,19 +1,21 @@
-<div class="container">
+<div class="container pt-5">
   <div class="row">
     <div class="col-12 col-md-8">
       <%= render "profile-card" %>
     </div>
-    <div class="col-12 col-md-4 calendar-warpper">
-      <div style="background-color: red; height: 300px; width: 100%;"></div>
-      <div class="d-none d-md-block w-100">
-        <img id="map" class="img-fluid w-100" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieGVuaWFldmEiLCJhIjoiY2s2Y2dyeWRxMDNnazNscGNlY3o3a3FtaSJ9.gRMQKWJg_bjFuLcvO05ilA'>
+    <div class="col-12 col-md-4">
+      <div class="calendar-warpper mb-4">
+        <div style="background-color: red; height: 300px; width: 100%;"></div>
+        <div class="d-none d-md-block w-100">
+          <img id="map" class="img-fluid w-100" src='https://www.worldeasyguides.com/wp-content/uploads/2014/03/Map-of-Plaza-de-la-Republica-Buenos-Aires.jpg'>
+        </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-md-8">
       <%= render "profile-info" %>
-      <h3>Reviews</h3>
+      <h2 class="mb-3">Reviews</h2>
       <div>
         <%= render "review-card" %>
         <%= render "review-card" %>
