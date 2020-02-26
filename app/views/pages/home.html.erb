@@ -5,10 +5,10 @@
   <meta name="Keywords" content="Doctors directory, ginecologist, dentist, odontologist, radiology, orthopedist, dermatology, nutritionist, psychology">
 </head>
 <body>
-  <nav class="navbar navbar-light bg-light pl-8 fixed-top">
+  <!-- <nav class="navbar navbar-light bg-light pl-8 fixed-top">
     <a class="navbar-brand" href="#">
-      <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top fas fa-user-md" alt="">
-      Doctorify
+      <%= image_tag "doctorify_logo.png", alt: "logo", size: "30", class: "d-inline-block align-top" %>
+    Doctorify
     </a>
     <span class="d-flex align-items-center">
       <%= link_to new_user_session_path do %>
@@ -19,25 +19,54 @@
       <% end %>
       <%= link_to "I'm a doctor", new_user_registration_path(doctor: "true"), class: "pl-2" %>
     </span>
-  </nav>
+  </nav> -->
   <div class="main-container" style="background-image: url('https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80');">
     <div class="container">
       <h1>Book an appointment. <strong>Feel better</strong></h1>
       <div class="form">
-        <form>
-          <div class="form-group col-sm-4 col-form-label">
-            <label for="specializationInput">I am looking for</label>
-            <input type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization">
-          </div>
-          <div class="form-group col-sm-4 col-form-label">
-            <label for="locationInput">Location</label>
-            <input type="text" class="form-control" id="locationInput2" placeholder="Palermo Soho, Buenos Aires">
-            <button type="submit" class="btn btn-primary my-4">Find doctors</button>
-          </div>
-        </form>
+        <div class="form-group col-sm-12 col-md-4 col-form-label">
+          <label for="specializationInput">I am looking for</label>
+          <% User.specializations.each do |specialization| %>
+
+          <% end %>
+          <input type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-form-label">
+          <label for="locationInput">Location</label>
+          <input type="text" class="form-control" id="locationInput" placeholder="Palermo Soho, Buenos Aires">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-form-label">
+        <%= link_to "Find doctors", users_path(specialization: "", location:""), class: "btn btn-primary my-4", id:"findDoctors" %>
+        </div>
       </div>
     </div>
   </div>
+  <div class="container">
+    <h2 class="my-4">Feel better in 3 steps</h2>
+    <div class="cards">
+    <div class="card-home list-inline">
+      <i class="fas fa-search-location fa-5x" style="color:#167FFB;"></i>
+      <div class="card-body">
+        <h5 class="card-title">Search</h5>
+        <p class="card-text">Give us a location and the specialization of the doctor you would like to find.</p>
+      </div>
+    </div>
+    <div class="card-home">
+      <i class="fas fa-user-md fa-5x" style="color:#167FFB;"></i>
+        <div class="card-body">
+        <h5 class="card-title">Choose a doctor</h5>
+        <p class="card-text">We will filter the results to make it easier for you to pick a doctor.</p>
+      </div>
+    </div>
+    <div class="card-home">
+      <i class="fas fa-calendar-day fa-5x" style="color:#167FFB;"></i>
+      <div class="card-body">
+        <h5 class="card-title">Make an appointment</h5>
+        <p class="card-text">When the choice is done, you can choose an available date and book your appointment.</p>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="footer">
     <div class="footer-links">
       <a href="#"><i class="fab fa-instagram"></i></a>
@@ -45,8 +74,8 @@
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
-  <div class="footer-copyright">
-  </div>
+    <div class="footer-copyright">
+    </div>
   </div>
 </body>
 

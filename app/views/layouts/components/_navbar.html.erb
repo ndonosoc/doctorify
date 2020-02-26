@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light pl-8 fixed-top">
+  <%= render 'layouts/components/navbar_partials/logo_and_brand' %>
+  <% if user_signed_in? && current_user.category == false %>
+    <%= render 'layouts/components/navbar_partials/search_bar' %>
+    <%= render 'layouts/components/navbar_partials/user_links' %>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= render 'layouts/components/navbar_partials/user_links' %>
+  <% else %>
+    <%= render 'layouts/components/navbar_partials/visitor_links' %>
+  <% end %>
+</nav>
+
