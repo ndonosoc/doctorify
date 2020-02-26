@@ -16,7 +16,9 @@ class ReviewsController < ApplicationController
     authorize @review
     @review.appointment = @appointment
     if @review.save
-      redirect_to root_path
+      redirect_to edit_user_registration_path
+    else
+      render :new
     end
   end
 
