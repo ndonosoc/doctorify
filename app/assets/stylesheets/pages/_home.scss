@@ -8,6 +8,9 @@
 
 // CSS ------ DOCTOR PROFILE
 
+.rating i {
+  padding-right: 5px;
+}
 
 @media (min-width: 768px) {
   .calendar-warpper {
@@ -31,14 +34,43 @@
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   align-items: center;
+  padding: 10px;
+  .profile-card-data {
+    margin-left: 10px;
+  h1 {
+    font-size: 30px;
+    margin: 0;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 0;
+    font-style: italic;
+  }
+  .ratings {
+    margin: 0;
+    padding: 5px;
+  }
+
+  }
 }
 .profile-info {
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   align-items: center;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .review-card {
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   align-items: center;
+  .h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .p {
+    font-size: 16px;
+  }
 }
