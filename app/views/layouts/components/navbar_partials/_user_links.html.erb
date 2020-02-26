@@ -2,7 +2,7 @@
   <button class="btn btn-sm btn-outline-secondary" type="button">log out</button>
 <% end %>
 <div class="nav-item dropdown">
-      <% if user_signed_in? %>
+      <% if current_user.photo.attached? %>
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
       <% else %>
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg" />
