@@ -30,13 +30,14 @@
   height: 50px;
   border-radius: 50%;
 }
-.profile-card {
+
+.white-card {
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  align-items: center;
-  padding: 10px;
-  .profile-card-data {
-    margin-left: 10px;
+  padding: 20px 10px;
+}
+.profile-card-data {
+  margin-left: 10px;
   h1 {
     font-size: 30px;
     margin: 0;
@@ -46,31 +47,27 @@
     font-size: 18px;
     margin: 0;
     font-style: italic;
+    padding: 5px 0;
   }
   .ratings {
     margin: 0;
-    padding: 5px;
+    padding: 5px 0;
   }
+}
 
-  }
-}
-.profile-info {
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  align-items: center;
-  padding: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.review-card {
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  align-items: center;
-  .h3 {
+.review-card-data {
+  margin-left: 10px;
+  h3 {
     font-size: 20px;
     font-weight: bold;
   }
-  .p {
-    font-size: 16px;
+  p {
+    font-size: 14px;
+    font-weight: lighter;
+    font-style: italic;
+  }
+  .ratings {
+    margin: 0;
+    padding: 5px 0;
   }
 }
