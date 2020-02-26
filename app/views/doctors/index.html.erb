@@ -3,7 +3,6 @@
     <div class="col-8">
       <div class="cards">
         <div class="card-doctor my-2">
-          <%= cl_image_path user.photo.key %>
           <div class="card-wrapper">
             <div class="card-doctor-infos">
               <h2>Doctor's name</h2>
@@ -70,7 +69,7 @@
               <!-- Text -->
               <p class="card-text collapse" id="collapseContent">Specialized in orthodontics and making your teeth beautiful.</p>
               <!-- Button -->
-              <%= link_to users_path do %>
+              <%= link_to new_user_appointment_path(1) do %>
               <button class="btn btn-primary ml-3 position-relative" type="Book appointment">Book appointment</button>
               <% end %>
             </div>
