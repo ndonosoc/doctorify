@@ -12,11 +12,11 @@
     <%= f.input :age, required: true, autofocus: true %>
     <%= f.input :dni, required: true, autofocus: true %>
     <% if current_user.category == true %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :location, required: true, autofocus: true %>
     <%= f.input :specialization, required: true, autofocus: true %>
     <%= f.input :reference_number, required: true, autofocus: true %>
     <% end %>
-
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
