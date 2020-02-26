@@ -19,8 +19,28 @@
   <div class="row">
     <div class="col-12 col-md-8">
       <%= render "profile-info" %>
-          <%= link_to "Book now!", new_user_appointment_path(params[:id]), class:"btn btn-primary" %>
-
+            <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
+        Book now!</button>
+          <!-- Booking Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Choose your date</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <div class="form-groups mb-3">
+                  <%= simple_form_for [@doctor, @appointment] do |f| %>
+                  <%= f.input :appointment_date, as: :string, input_html: { class: "datepicker form-control" } %>
+                  <%= f.button :submit, class: "btn btn-success mt-3", style: "color: white;" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+</div>
       <h2 class="mb-3">Reviews</h2>
       <div>
         <%= render "review-card" %>
