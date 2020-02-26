@@ -1,57 +1,21 @@
-<div class="container-fluid">
-  <div class="row" >
-    <div class="col-8">
-      <div class="cards">
-        <div class="card-doctor my-2">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-wrapper">
-            <div class="card-doctor-infos">
-              <h2>Doctor's name</h2>
-              <p>Practice description with <strong>relevant info</strong> only.</p>
-            </div>
-            <div class="actions d-flex justify-content-end">
-              <a class="btn btn-ghost btn-sm my-2 float-right"> <i class="far fa-calendar-alt"></i> Make an appointment</a>
-              <a class="btn btn-ghost btn-sm my-2 float-right"> <i class="far fa-envelope"></i> Message</a>
-            </div>
-          </div>
-        </div>
-        <div class="card-doctor my-2">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-wrapper">
-            <div class="card-doctor-infos">
-              <h2>Doctor's name</h2>
-              <p>Practice description with <strong>relevant info</strong> only.</p>
-            </div>
-            <div class="actions d-flex justify-content-end">
-              <a class="btn btn-ghost btn-sm my-2 float-right"> <i class="far fa-calendar-alt"></i> Make an appointment</a>
-              <a class="btn btn-ghost btn-sm my-2 float-right"> <i class="far fa-envelope"></i> Message</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid mt-6">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-8">
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
+      <%= render "doctor-card" %>
     </div>
-    <div class="col-4">
-      <div class="map">
-          <img id="map" class="img-fluid" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieGVuaWFldmEiLCJhIjoiY2s2Y2dyeWRxMDNnazNscGNlY3o3a3FtaSJ9.gRMQKWJg_bjFuLcvO05ilA'>
-      </div>
+    <div class="d-none d-sm-block col-sm-6 col-md-4">
+      <div id="map" style="height: 100%; width: 100%; background-color: red;"></div>
     </div>
   </div>
 </div>
-
-
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    <i class="fas fa-user-md"></i> Doctorify
-  </div>
-</div>
-
-
-

@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
     @appointment.patient = current_user
     @appointment.doctor = @doctor
     if @appointment.save
-      redirect_to root_path
+      redirect_to edit_user_registration_path
     end
   end
 

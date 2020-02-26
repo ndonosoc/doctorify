@@ -1,7 +1,8 @@
 import "bootstrap";
 import "../plugins/search";
 import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/flatpickr.min.css';
+import {initAutocomplete} from '../plugins/init_autocomplete';
 
 flatpickr(".datepicker", {
   altInput: true,
@@ -17,3 +18,5 @@ flatpickr(".timepicker", {
     maxTime: "22:00",
     minuteIncrementer: 15
 });
+
+initAutocomplete();

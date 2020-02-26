@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'doctors', to: 'doctors#index', as: 'doctors'
   get "test", to: 'pages#test'
   resources :users, only: [] do
-    resources :appointments, only: [:new, :create]
+    resources :appointments, only: [:new, :create] do
+      resources :reviews, only: [:new, :create]
+    end
   end
   get "/users", to: "doctors#index", as: :users
   get "/users/:id", to: "doctors#show", as: :user
