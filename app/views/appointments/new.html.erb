@@ -1,0 +1,4 @@
+<%= simple_form_for [@doctor, @appointment] do |f| %>
+<%= f.input :appointment_date, as: :string, input_html: { class: "datepicker form-control" } %>
+<%= f.button :submit, class: "btn btn-success mt-3", style: "color: white;" %>
+<% end %>
