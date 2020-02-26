@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :reviews, through: :appointment
   has_one_attached :photo
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def self.specializations
     %w(spec1 spec2)
   end
