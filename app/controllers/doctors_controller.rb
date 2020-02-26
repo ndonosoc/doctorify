@@ -15,6 +15,8 @@ skip_before_action :authenticate_user!
   end
   def show
     @doctor = User.find(params[:id])
+    @appointment = Appointment.new
+    authorize @appointment
     authorize @doctor
   end
 end
