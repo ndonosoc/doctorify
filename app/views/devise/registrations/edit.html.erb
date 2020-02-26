@@ -13,6 +13,8 @@
             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
             <% end %>
       <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
+      <a class="nav-link border border-white rounded" id="v-pills-appointments-tab" data-toggle="pill" href="#v-pills-appointments" role="tab" aria-controls="v-pills-appointments" aria-selected="false">Your Appointments</a>
+      <a class="nav-link border border-white rounded" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">Your Reviews</a>
       <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
         Update
       </button>
@@ -44,7 +46,7 @@
         <div class="form-groups mb-3">
           <%= f.input :dni, required: true, autofocus: true %>
         </div>
-      </div>
+    </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         <div class="form-groups mb-3">
           <%= f.input :specialization, required: true, autofocus: true %>
@@ -81,8 +83,24 @@
           <%= link_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete do %> <button class="btn btn-primary">Cancel my account</button><% end %>
         </div>
       </div>
-      <div class="tab-pane fade" id="v-pills-update" role="tabpanel" aria-labelledby="v-pills-update-tab">
-
+      <div class="tab-pane fade show active" id="v-pills-appointments" role="tabpanel" aria-labelledby="v-pills-appointments-tab">
+        <div class="form-groups mb-3">
+        <% current_user.appointments.each do |appointment| %>
+        <%= appointment.appointment_date %> with <%= appointment.doctor.email %>
+        <% if appointment.patient == current_user %>
+        <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+        <% end %>
+        <% end %>
+      </div>
+      </div>
+      <div class="tab-pane fade show active" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
+        <div class="form-groups mb-3">
+        <% current_user.appointments.each do |appointment| %>
+        <% if appointment.patient == current_user %>
+        <%= appointment.reviews.content %> rated: <%= appointment.reviews.rating %>
+        <% end %>
+        <% end %>
+      </div>
       </div>
     </div>
   </div>
@@ -111,6 +129,7 @@
     </div>
   </div>
 </div>
+
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

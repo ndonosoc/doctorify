@@ -1,0 +1,7 @@
+<div class="container mx-auto">
+<%= simple_form_for [@user, @appointment, @review] do |f| %>
+  <%= f.input :content, input_html: { class: 'form-control' } %>
+  <%= f.input :rating, collection: 1..5, selected: 1, input_html: { class: 'form-control' } %>
+  <%= f.button :submit, class: 'btn btn-dark mt-3' %>
+<% end %>
+</div>
