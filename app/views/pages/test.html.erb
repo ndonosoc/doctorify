@@ -1,65 +1,30 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="#">
-    <i class="fas fa-user-md"></i> Doctorify
-  </a>
-</div>
 <div class="container">
   <div class="row">
-    <div class="card col-12 col-md-8 d-flex.justify-content-between" >
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" width="250" />
-      <div class="profile flex-grow-1">
-        <h1>Doctors name</h1>
-        <h2>Specialization</h2>
-        <div class="rating d-flex">
-          <i>a</i>
-          <i>a</i>
-          <i>a</i>
-          <i>a</i>
-          <i>a</i>
-        </div>
-      </div>
+    <div class="col-12 col-md-8">
+      <%= render "profile-card" %>
     </div>
-    <div class="col-12 col-md-4 fixed-md">
-      <div class="calendar">calendar</div>
+    <div class="col-12 col-md-4">
+      <div height="200px" width="400px" style="background-color: red;"></div>
+      <div class="d-none d-md-block w-100">
+        <img id="map" class="img-fluid w-100" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieGVuaWFldmEiLCJhIjoiY2s2Y2dyeWRxMDNnazNscGNlY3o3a3FtaSJ9.gRMQKWJg_bjFuLcvO05ilA'>
+      </div>
     </div>
   </div>
-
   <div class="row">
-    <div class="info&reviews col-12 col-md-8">
-      <div class="card-info-map d-flex">
-        <div class="information flex-grow-1">
-          <p class="location">location</p>
-          <p class="age">age</p>
-          <p class="phone_number">phone_number</p>
-          <p class="email">email</p>
-        </div>
-        <div class="map d-md-none" width="50%">
-          <img id="map" class="img-fluid" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieGVuaWFldmEiLCJhIjoiY2s2Y2dyeWRxMDNnazNscGNlY3o3a3FtaSJ9.gRMQKWJg_bjFuLcvO05ilA'>
-        </div>
-      </div>
+    <div class="col-12 col-md-8">
+      <%= render "profile-info" %>
       <h3>Reviews</h3>
-      <div class="card-doctor">
-        <div class="reviews">
-          <div class="card-review">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" width="50%" />
-            <div class="comment flex-grow-1">
-              <h4>username review</h4>
-              <p>review comment</p>
-              <div class="rating d-flex">
-                <i>a</i>
-                <i>a</i>
-                <i>a</i>
-                <i>a</i>
-                <i>a</i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="map d-none d-sm-block" width="50">
-        <img id="map" class="img-fluid" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieGVuaWFldmEiLCJhIjoiY2s2Y2dyeWRxMDNnazNscGNlY3o3a3FtaSJ9.gRMQKWJg_bjFuLcvO05ilA'>
+      <div>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
+        <%= render "review-card" %>
       </div>
     </div>
   </div>
