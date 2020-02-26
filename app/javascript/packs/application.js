@@ -3,8 +3,8 @@ import "../plugins/search";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'flatpickr/dist/flatpickr.min.css'
 import flatpickr from 'flatpickr';
-
 import { initMapbox } from '../plugins/init_mapbox';
+import {initAutocomplete} from '../plugins/init_autocomplete';
 
 initMapbox();
 
@@ -22,3 +22,5 @@ flatpickr(".timepicker", {
     maxTime: "22:00",
     minuteIncrementer: 15
 });
+
+initAutocomplete();
