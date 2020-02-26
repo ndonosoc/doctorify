@@ -4,4 +4,9 @@ class UserPolicy < ApplicationPolicy
       scope.where(category: true)
     end
   end
+
+  def show?
+    true
+  end
+
 end
