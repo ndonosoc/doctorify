@@ -1,15 +1,24 @@
-<div class="profile-info d-flex mb-5">
-  <div class="flex-grow-1 d-md-flex">
-    <div class="flex-grow-1">
-      <p class="address">Address: Niceto Vega 4866</p>
-      <p class="age">Age: 35</p>
+<div class="d-flex mb-4 white-card">
+  <div class="flex-grow-1 d-md-flex text-secondary">
+    <div class="flex-grow-1 d-flex flex-column justify-content-between">
+      <div class="d-flex px-3 align-items-center mx-auto mx-md-0 mb-2 mb-md-3">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="pl-2"><%= doctor.address %></span>
+      </div>
+      <div class="d-flex px-3 align-items-center mx-auto mb-2 mx-md-0">
+        <i class="fas fa-user-md"></i>
+        <span class="pl-2"><%= doctor.age %> years</span>
+      </div>
     </div>
-    <div class="flex-grow-1">
-      <p class="phone_number">Phone_number: 444-4444</p>
-      <p class="email">Email: doctor@gmail.com</p>
+    <div class="flex-grow-1 d-flex flex-column justify-content-between">
+      <div class="d-flex px-3 align-items-center mx-auto mx-md-0 mb-2 mb-md-3">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="pl-2"><%= doctor.phone_number %></span>
+      </div>
+      <div class="d-flex px-3 align-items-center mx-auto mb-2 mx-md-0">
+        <i class="fas fa-user-md"></i>
+        <span class="pl-2"><%= doctor.email %></span>
+      </div>
     </div>
-  </div>
-  <div class="d-block d-md-none w-50">
-    <img id="map" class="img-fluid" src='https://www.worldeasyguides.com/wp-content/uploads/2014/03/Map-of-Plaza-de-la-Republica-Buenos-Aires.jpg'>
   </div>
 </div>

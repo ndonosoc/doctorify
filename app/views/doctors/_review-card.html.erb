@@ -1,14 +1,16 @@
-<div class="review-card d-flex justify-content-between mb-4" >
-  <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" class="avatar-review mr-2" />
-  <div class="flex-grow-1">
-    <h3 class="mb-1">User name</h3>
-    <p class="mb-1">Comment</p>
-    <div class="d-flex rating">
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
+<div class="white-card d-flex justify-content-between" >
+  <img src="https://cdn1.vectorstock.com/i/1000x1000/14/80/doctor-web-icon-therapist-avatar-vector-18531480.jpg" class="avatar avatar-sm" />
+  <div class="review-card-data flex-grow-1">
+    <h3><%= review.patient.first_name.capitalize %> <%= review.patient.last_name.capitalize %></h3>
+    <div class="ratings my-2 d-flex rating">
+      <% 5.times do |num| %>
+        <% if num <= review.rating %>
+          <i class="fas fa-star text-warning"></i>
+        <% else %>
+          <i class="far fa-star text-warning"></i>
+        <% end %>
+      <% end %>
     </div>
+    <p><%= review.content %></p>
   </div>
 </div>

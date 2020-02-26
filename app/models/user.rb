@@ -12,4 +12,12 @@ class User < ApplicationRecord
   def self.specializations
     %w(spec1 spec2)
   end
+
+  def rating
+    if reviews.count.zero?
+      return false
+    else
+      reviews.map { |review| review.rating }.sum / reviews.count
+    end
+  end
 end
