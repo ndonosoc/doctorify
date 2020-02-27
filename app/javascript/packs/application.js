@@ -15,9 +15,46 @@ if (datepicker) {
     inline: true,
     altInput: true,
     enableTime: true,
-      enable: [ "2020-02-01", "2020-02-02", "2020-02-03", "2020-02-05"]
+    minDate: 'today',
+    minuteIncrementer: "30",
+    "disable": [
+        function(date) {
+            return (date.getDay() === 0 || date.getDay() === 6);
+        }
+    ],
     });
 }
+
+const toggleDateInputs = () => {
+  const dateInput = document.getElementById('appointment_date');
+
+  if (dateInput) {
+    const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
+
+    flatpickr(startDateInput, {
+    minDate: 'today',
+    dateFormat: 'd-m-Y',
+    disable: unvailableDates,
+    onChange: function(selectedDate) {
+      if (selectedDate === '') {
+        dateInput.disabled = true;
+      }
+      let minDate = selectedDates[0];
+      minDate.setDate(minDate.getDate() + 1);
+      endDateCalendar.set('minDate', minDate);
+      endDateInput.disabled = false;
+    }
+  });
+    const endDateCalendar =
+      flatpickr(endDateInput, {
+        dateFormat: 'd-m-Y',
+        disable: unvailableDates,
+        },
+      );
+  }
+};
+
+export { toggleDateInputs }
 
 if (timepicker) {
   flatpickr(".timepicker", {

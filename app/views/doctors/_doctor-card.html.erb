@@ -6,7 +6,18 @@
       <p class="font-weight-light m-0"><%= doctor.specialization %></p>
       <div class="">
         <i class="fas fa-star"></i>
-        <span class="pl-1">3.6</span>
+        <span class="pl-1">
+          <% counter = 0 %>
+          <% sumofreviews = 0 %>
+        <% doctor.bookings.each do |booking| %>
+          <% if booking.review != nil %>
+            <% counter += 1 %>
+            <% sumofreviews += booking.review.rating %>
+          <% end %>
+        <% end %>
+        <% averagerating = sumofreviews.fdiv(counter) %>
+        <%= averagerating %>
+        </span>
       </div>
     </div>
     <h2 class="mt-2 mb-2"><%= link_to user_path(doctor.id) do %>Dr. <%= doctor.last_name.capitalize %> <% end %></h2>
