@@ -4,9 +4,11 @@
     <h1><%= doctor.first_name.capitalize %> <%= doctor.last_name.capitalize %></h1>
     <h2><%= doctor.specialization.upcase %></h2>
     <div class="ratings d-flex rating">
-      <% if doctor.rating %>
+
+
+      <% if @averagerating %>
         <% 5.times do |num| %>
-          <% if num <= doctor.rating %>
+          <% if num <= @averagerating %>
             <i class="fas fa-star text-warning"></i>
           <% else %>
             <i class="far fa-star text-warning"></i>
@@ -15,6 +17,8 @@
       <% else %>
         <span class="text-muted">Doctor without reviews</span>
       <% end %>
+
+
     </div>
   </div>
 </div>
