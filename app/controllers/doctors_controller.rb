@@ -5,17 +5,16 @@ skip_before_action :authenticate_user!
     @doctors = policy_scope(User).order(created_at: :desc)
     if params[:specialization].present?
       sql_query = "specialization ILIKE :specialization"
-      @doctors = User.where(sql_query, specialization: "%#{params[:specialization]}%")
+      @doctors = policy_scope(User).where(sql_query, specialization: "%#{params[:specialization]}%")
     else
-      @doctors = User.all
+      @doctors = policy_scope(User)
     end
     # if params[:location].present?
       # @doctors.near(params[:location])
     # end
-  end
 
 
-    @doctors = policy_scope(User) # .where.not(longitude: nil)
+    # @doctors = policy_scope(User) # .where.not(longitude: nil)
     @markers = @doctors.map do |doctor|
       {
         lat: doctor.latitude,

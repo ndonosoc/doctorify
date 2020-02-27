@@ -12,8 +12,8 @@
   </head>
   <body>
     <%= render 'layouts/components/navbar' %>
-
-    <div class="flex-grow-1 pt-5" style="background-color: #f4f4f4;">
+    <% padding = params[:controller] == "pages" && params[:action] == "home" ? '' : 'pt-5' %>
+    <div class="mflex-grow-1 <%= padding %>" style="background-color: #f4f4f4;">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
