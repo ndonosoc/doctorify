@@ -1,5 +1,11 @@
-<span class="d-flex">
-  <input type="text" class="navbar-toggler" id="locationInput" placeholder="Find your next physician!" style="background-color: white;">
+<div>
+<span class="">
+  <form class="form d-flex" action="<%= users_path %>">
+  <input name="address" type="text" class="navbar-toggler" id="locationInput" placeholder="Find your next physician!" style="background-color: white; font-size: 12px;">
 <%= link_to users_path(location:""), class: "btn btn-primary", id:"findDoctors" do %>
 <i class="fas fa-search"></i>
-<% end %></span>
+<% end %>
+</form>
+</span>
+</div>
+
