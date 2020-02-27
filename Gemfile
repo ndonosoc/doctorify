@@ -13,6 +13,7 @@ gem 'pundit'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'cloudinary', '~> 1.12.0'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
