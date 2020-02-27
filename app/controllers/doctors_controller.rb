@@ -19,21 +19,11 @@ skip_before_action :authenticate_user!
     @markers = @doctors.map do |doctor|
       {
         lat: doctor.latitude,
-        lng: doctor.longitude
+        lng: doctor.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { doctor: doctor })
       }
     end
   end
-
-
-
-  #   @doctors = policy_scope(User) # .where.not(longitude: nil)
-  #   @markers = @doctors.map do |doctor|
-  #     {
-  #       lat: doctor.latitude,
-  #       lng: doctor.longitude
-  #     }
-  #   end
-  # end
 
   def show
     @doctor = User.find(params[:id])

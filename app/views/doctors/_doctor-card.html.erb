@@ -18,9 +18,9 @@
     </div>
   </div>
   <% if doctor.photo.attached? %>
-    <img src="<%= cl_image_path doctor.photo.key %>">
+    <img class= "doctor-card-image" src="<%= cl_image_path doctor.photo.key %>">
   <% else %>
-    <img src="https://cdn6.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumbCard.jpg" alt="" class="w-25 d-none d-lg-block">
+    <img class = "default-picture" src="https://cdn6.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumbCard.jpg" alt="" class="w-25 d-none d-lg-block">
   <% end %>
 </div>
 <% end %>
