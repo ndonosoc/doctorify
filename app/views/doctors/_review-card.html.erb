@@ -1,7 +1,6 @@
 <div class="white-card d-flex justify-content-between my-3" >
   <img src="https://cdn1.vectorstock.com/i/1000x1000/14/80/doctor-web-icon-therapist-avatar-vector-18531480.jpg" class="avatar avatar-sm" />
   <div class="review-card-data flex-grow-1">
-    <h3><%= review.patient.first_name.capitalize %> <%= review.patient.last_name.capitalize %></h3>
     <div class="ratings my-2 d-flex rating">
       <% 5.times do |num| %>
         <% if num <= review.rating %>
