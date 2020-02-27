@@ -26,7 +26,7 @@ class DoctorsController < ApplicationController
   def show
 
     @doctor = User.find(params[:id])
-    authorize current_user
+    # authorize current_user
     if @doctor.category == true
       @markers = [{
         lat: @doctor.latitude,

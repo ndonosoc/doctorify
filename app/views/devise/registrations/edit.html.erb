@@ -93,6 +93,8 @@
             <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %>
             <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
             <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+            <% elsif appointment.appointment_date > DateTime.now %>
+            You still haven't been to this appointment!
             <% else %>
             You already reviewed this appointment!
             <% end %>
