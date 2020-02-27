@@ -3,13 +3,14 @@ import "../plugins/search";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'flatpickr/dist/flatpickr.min.css'
 import flatpickr from 'flatpickr';
-import { initMapbox } from '../plugins/init_mapbox';
+// import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
 
-initMapbox();
+// initMapbox();
 
 flatpickr(".datepicker", {
   altInput: true,
+  inline: true,
   enableTime: true,
     enable: [ "2020-02-01", "2020-02-02", "2020-02-03", "2020-02-05"]
   });

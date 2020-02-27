@@ -8,6 +8,7 @@
         <% if current_user.category == true %>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
         <a class="nav-link" id="v-pills-reviewsreceived-tab" data-toggle="pill" href="#v-pills-reviewsreceived" role="tab" aria-controls="v-pills-reviewsreceived" aria-selected="false">Reviews Received</a>
+        <a class="nav-link" id="v-pills-patients-tab" data-toggle="pill" href="#v-pills-patients" role="tab" aria-controls="v-pills-patients" aria-selected="false">Your Patients</a>
         <% end %>
         <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
         <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
@@ -64,7 +65,7 @@
             <%= f.input :reference_number, required: true, autofocus: true %>
           </div>
           <div class="form-groups mb-3">
-            <%= f.input :address, input_html: { class: 'address'} %>
+            <%= f.input :address, input_html: { id: 'address'} %>
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -89,11 +90,14 @@
             <p>You haven't booked any appointment yet!</p>
             <% end %>
             <% current_user.appointments.each do |appointment| %>
-            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %></p>
-            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now %>
+            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %>
+            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
             <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+            <% else %>
+            You already reviewed this appointment!
             <% end %>
             <% end %>
+            </p>
           </div>
         </div>
         <div class="tab-pane fade show" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
@@ -103,9 +107,7 @@
             <% end %>
             <ul>
               <% current_user.reviews.each do |review| %>
-              <% if review.patient == current_user %>
-              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
-              <% end %>
+                  <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
               <% end %>
             </ul>
           </div>
@@ -118,8 +120,20 @@
             <ul>
               <% current_user.reviews.each do |review| %>
               <% if review.doctor == current_user %>
-              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
+              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> by patient <%= review.patient.last_name %></li>
               <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="v-pills-patients" role="tabpanel" aria-labelledby="v-pills-patients-tab">
+          <div class="form-groups mb-3">
+            <% if current_user.bookings.empty? %>
+              <p>You haven't received any patients yet!</p>
+            <% end %>
+            <ul>
+              <% current_user.bookings.each do |booking| %>
+              <li>You are seeing patient <%= booking.patient.first_name %> <%= booking.patient.last_name %> on <%= booking.appointment_date %></li>
               <% end %>
             </ul>
           </div>
