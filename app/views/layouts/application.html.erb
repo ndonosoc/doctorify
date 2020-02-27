@@ -11,22 +11,25 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'layouts/components/navbar' %>
 
-    <div class="flex-grow-1 pt-5" style="background-color: #f4f4f4;">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+    <div class="min-vh-100 d-flex flex-column"> <!-- This div fixes the footer as it shifts the row vision to column -->
+      <%= render 'layouts/components/navbar' %>
 
-    <div class="footer flex-grow-0 bg-white">
-      <div class="footer-links">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
+      <div class="flex-grow-1 pt-5" style="background-color: #f4f4f4;">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
       </div>
-      <div class="footer-copyright">
+
+      <div class="footer flex-grow-0 bg-white">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+        </div>
       </div>
     </div>
   </div>

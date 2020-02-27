@@ -12,9 +12,6 @@ skip_before_action :authenticate_user!
     # if params[:location].present?
       # @doctors.near(params[:location])
     # end
-  end
-
-
     @doctors = policy_scope(User) # .where.not(longitude: nil)
     @markers = @doctors.map do |doctor|
       {
@@ -23,11 +20,13 @@ skip_before_action :authenticate_user!
       }
     end
   end
+
   def show
     @doctor = User.find(params[:id])
     @appointment = Appointment.new
     authorize @appointment
     authorize @doctor
   end
+
 end
 
