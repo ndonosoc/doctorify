@@ -44,30 +44,4 @@
 }
 
 
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards-all {
-    grid-template-columns: 1fr;
-  }
-  .map {
-    display: none;
-  }
-}
-
-@media (min-width: 576px) {
-  .cards-all {
-    grid-template-columns: 1fr 1fr;
-  }
-  .map {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .cards-all {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .map {
-    display: block;
-  }
-}
 
