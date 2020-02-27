@@ -16,7 +16,7 @@
     <div class="min-vh-100 d-flex flex-column"> <!-- This div fixes the footer as it shifts the row vision to column -->
       <%= render 'layouts/components/navbar' %>
       <% padding = params[:controller] == "pages" && params[:action] == "home" ? '' : 'pt-5' %>
-      <div class="mflex-grow-1 <%= padding %>" style="background-color: #f4f4f4;">
+      <div class="mflex-grow-1 <%= padding %>" style="background-color: #d8e8fbbf;">
         <%= render 'shared/flashes' %>
           <%= yield %>
       </div>

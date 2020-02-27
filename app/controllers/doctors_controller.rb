@@ -35,6 +35,15 @@ skip_before_action :authenticate_user!
     authorize @appointment
     authorize @doctor
 
+    if @doctor.reviews.count > 0
+      sumofreviews = 0
+      @doctor.reviews.each do |review|
+        sumofreviews += review.rating
+      end
+      @averagerating = sumofreviews / @doctor.reviews.count
+    end
+  end
+
       counter = 0
       sumofreviews = 0
 
