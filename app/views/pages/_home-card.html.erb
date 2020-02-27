@@ -1,6 +1,7 @@
  <div class="main-container container-banner" style="">
-  <div class="ml-5 p-2 w-50" style="">
-    <h1 class="text-shadow">Book an appointment. <strong>Feel better</strong></h1>
+  <div class="container" style="">
+    <h1 class="text-shadow">Book an appointment.
+    <br>Feel Better</h1>
     <div class="form">
       <div class="form-group col-sm-12 col-md-9 col-form-label">
         <label for="specializationInput">I am looking for</label>
@@ -13,7 +14,7 @@
         <input type="text" class="form-control" id="locationInput" placeholder="Palermo Soho, Buenos Aires">
       </div>
       <div class="form-group col-sm-12 col-md-4 col-form-label">
-        <%= link_to "Find doctors", users_path(specialization: "", location:""), class: "btn btn-primary my-4", id:"findDoctors" %>
+        <%= link_to "Find doctors", users_path(specialization: "", location:""), class: "btn btn-primary my-2 w-100", id:"findDoctors" %>
       </div>
     </div>
   </div>
