@@ -1,6 +1,5 @@
 class DoctorsController < ApplicationController
-skip_before_action :authenticate_user!
-
+  skip_before_action :authenticate_user!
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
     if params[:specialization].present?
@@ -25,23 +24,32 @@ skip_before_action :authenticate_user!
   end
 
   def show
+
     @doctor = User.find(params[:id])
-    @markers = [{
+    authorize current_user
+    if @doctor.category == true
+      @markers = [{
         lat: @doctor.latitude,
         lng: @doctor.longitude
       }]
-    @appointment = Appointment.new
-    authorize @appointment
-    authorize @doctor
-    counter = 0
-    sumofreviews = 0
-    @doctor.bookings.each do |booking|
-      if booking.review != nil
-        counter += 1
-        sumofreviews += booking.review.rating
+      @appointment = Appointment.new
+      authorize @appointment
+      authorize @doctor
+
+
+      counter = 0
+      sumofreviews = 0
+
+      @doctor.bookings.each do |booking|
+        if booking.review != nil
+          counter += 1
+          sumofreviews += booking.review.rating
+        end
+        @averagerating = sumofreviews.fdiv(counter)
       end
+    else
+      redirect_to root_path
     end
-    @averagerating = sumofreviews.fdiv(counter)
   end
 end
 
