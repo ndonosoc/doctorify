@@ -17,6 +17,10 @@ class User < ApplicationRecord
     %w(spec1 spec2)
   end
 
+  def unavailable_dates
+    bookings.pluck(:appointment_date)
+  end
+
   def rating
     if reviews.count.zero?
       return false
