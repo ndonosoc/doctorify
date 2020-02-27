@@ -19,21 +19,11 @@ skip_before_action :authenticate_user!
     @markers = @doctors.map do |doctor|
       {
         lat: doctor.latitude,
-        lng: doctor.longitude
+        lng: doctor.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { doctor: doctor })
       }
     end
   end
-
-
-
-  #   @doctors = policy_scope(User) # .where.not(longitude: nil)
-  #   @markers = @doctors.map do |doctor|
-  #     {
-  #       lat: doctor.latitude,
-  #       lng: doctor.longitude
-  #     }
-  #   end
-  # end
 
   def show
     @doctor = User.find(params[:id])
@@ -45,14 +35,16 @@ skip_before_action :authenticate_user!
     authorize @appointment
     authorize @doctor
 
-    if @doctor.reviews.count > 0
+      counter = 0
       sumofreviews = 0
-      @doctor.reviews.each do |review|
-        sumofreviews += review.rating
-      end
-      @averagerating = sumofreviews / @doctor.reviews.count
-    end
-  end
 
+    @doctor.bookings.each do |booking|
+      if booking.review != nil
+        counter += 1
+        sumofreviews += booking.review.rating
+      end
+    end
+    @averagerating = sumofreviews.fdiv(counter)
+  end
 end
 

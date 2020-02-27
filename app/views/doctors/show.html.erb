@@ -18,9 +18,11 @@
       Book now!</button>
       <h2 class="mt-5 mb-3">Reviews</h2>
       <div>
-        <% if @doctor.rating %>
-          <% @doctor.reviews.each do |review| %>
-            <%= render "review-card", review: review %>
+        <% if !@doctor.bookings.empty? %>
+          <% @doctor.bookings.each do |booking| %>
+          <% if !booking.review.nil? %>
+            <%= render "review-card", review: booking.review %>
+           <% end %>
           <% end %>
         <% else %>
           <p>This doctor has not been reviewed yet.</p>

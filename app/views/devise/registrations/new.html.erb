@@ -1,6 +1,21 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+
+   <div class="container">
+      <div class="col-md-6 mx-auto text-center">
+         <div class="header-title">
+            <h1 class="wv-heading--title">
+               Check it out — it’s free!
+            </h1>
+            <h3 class="wv-heading--subtitle my-3">
+              Sign up, update your information and join a healthier lifestyle!
+            </h3>
+         </div>
+      </div>
+      <div class="row mt-3">
+         <div class="col-md-4 mx-auto">
+            <div class="myform form ">
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -20,8 +35,14 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
   </div>
-<% end %>
+  <% end %>
+    <div class="container mx-auto justify-content-center">
 
 <%= render "devise/shared/links" %>
+  </div>
+            </div>
+         </div>
+      </div>
+   </div>
