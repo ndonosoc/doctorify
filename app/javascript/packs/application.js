@@ -4,6 +4,7 @@ import 'flatpickr/dist/themes/material_blue.css';
 import flatpickr from 'flatpickr';
 import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
+import { addressInputFakeSelector } from '../plugins/algolia_fix';
 
 initMapbox();
 
