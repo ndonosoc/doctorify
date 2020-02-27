@@ -1,17 +1,19 @@
 import "bootstrap";
 import "../plugins/search";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/themes/material_blue.css'
 import flatpickr from 'flatpickr';
-import { initMapbox } from '../plugins/init_mapbox';
+// import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
 
-initMapbox();
+// initMapbox();
 
 flatpickr(".datepicker", {
   altInput: true,
+  inline: true,
+  // "plugins": [new confirmDatePlugin({ input: ".datepicker"})],
   enableTime: true,
-    enable: [ "2020-02-01", "2020-02-02", "2020-02-03", "2020-02-05"]
+  enable: [ "2020-02-01", "2020-02-02", "2020-02-03", "2020-02-05"]
   });
 
 flatpickr(".timepicker", {
