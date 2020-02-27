@@ -7,10 +7,9 @@ skip_before_action :authenticate_user!
       sql_query = "specialization ILIKE :specialization"
       @doctors = policy_scope(User).where(sql_query, specialization: params[:specialization])
     else
-
       @doctors = policy_scope(User)
-
     end
+
     if params[:address].present?
       @doctors.near(params[:address])
     end
@@ -34,19 +33,8 @@ skip_before_action :authenticate_user!
     @appointment = Appointment.new
     authorize @appointment
     authorize @doctor
-
-    if @doctor.reviews.count > 0
-      sumofreviews = 0
-      @doctor.reviews.each do |review|
-        sumofreviews += review.rating
-      end
-      @averagerating = sumofreviews / @doctor.reviews.count
-    end
-  end
-
-      counter = 0
-      sumofreviews = 0
-
+    counter = 0
+    sumofreviews = 0
     @doctor.bookings.each do |booking|
       if booking.review != nil
         counter += 1
