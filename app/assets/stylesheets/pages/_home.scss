@@ -24,12 +24,7 @@
     width: 290px ;
   }
 }
-.avatar {
-  vertical-align: middle;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
+
 .avatar-review {
   vertical-align: middle;
   width: 50px;
@@ -41,6 +36,12 @@
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 20px 10px;
+  .avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
 }
 .profile-card-data {
   margin-left: 10px;
