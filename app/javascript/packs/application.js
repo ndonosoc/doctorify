@@ -1,8 +1,12 @@
 import "bootstrap";
 import "../plugins/search";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import 'flatpickr/dist/flatpickr.min.css'
 import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
+import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
+
+initMapbox();
 
 flatpickr(".datepicker", {
   altInput: true,

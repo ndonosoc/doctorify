@@ -38,6 +38,7 @@ end
     last_name: Faker::Name.last_name,
     email: "#{Faker::Name.first_name}@gmail.com",
     dni: Faker::IDNumber.chilean_id,
+    address: "Buenos Aires",
     location: "Buenos Aires",
     specialization: nil,
     age: rand(20..80),
