@@ -1,4 +1,5 @@
 <span class="d-flex">
-  <input type="text" class="navbar-toggler" id="locationInput" placeholder="Palermo Soho, Buenos Aires">
-  <%= link_to "", users_path(location:""), class: "btn btn-primary", id:"findDoctors" %>
-</span>
+  <input type="text" class="navbar-toggler" id="locationInput" placeholder="Find your next physician!" style="background-color: white;">
+<%= link_to users_path(location:""), class: "btn btn-primary", id:"findDoctors" do %>
+<i class="fas fa-search"></i>
+<% end %></span>
