@@ -1,7 +1,12 @@
-const addressInputSelector = document.querySelector("#address")
+const addressInputFakeSelector = document.querySelector("#address")
+const addressInputTrueSelector = document.querySelector("#addressValue")
 
 
-if (addressInputSelector}) {
-
+if (addressInputFakeSelector) {
+  addressInputTrueSelector.value = addressInputFakeSelector.value;
+  addressInputFakeSelector.addEventListener('blur', event => {
+    addressInputTrueSelector.value = addressInputFakeSelector.value;
+  })
 }
+
 
