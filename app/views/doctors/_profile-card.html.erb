@@ -1,5 +1,9 @@
 <div class="white-card d-flex justify-content-between" >
-  <img src="https://cdn1.vectorstock.com/i/1000x1000/14/80/doctor-web-icon-therapist-avatar-vector-18531480.jpg" class="avatar" />
+    <% if doctor.photo.attached? %>
+      <img src="<%= cl_image_path doctor.photo.key %>" class="avatar" />
+    <% else %>
+      <img src="https://cdn1.vectorstock.com/i/1000x1000/14/80/doctor-web-icon-therapist-avatar-vector-18531480.jpg" class="avatar" />
+    <% end %>
   <div class="profile-card-data flex-grow-1">
     <h1><%= doctor.first_name.capitalize %> <%= doctor.last_name.capitalize %></h1>
     <h2><%= doctor.specialization.upcase %></h2>
@@ -13,7 +17,8 @@
           <% else %>
             <i class="far fa-star text-warning"></i>
           <% end %>
-        <% end %>
+        <% end %> <p></p>
+        <%="Average rating: #{@averagerating}" %>
       <% else %>
         <span class="text-muted">Doctor without reviews</span>
       <% end %>
