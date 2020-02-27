@@ -6,10 +6,9 @@ class DoctorsController < ApplicationController
       sql_query = "specialization ILIKE :specialization"
       @doctors = policy_scope(User).where(sql_query, specialization: params[:specialization])
     else
-
       @doctors = policy_scope(User)
-
     end
+
     if params[:address].present?
       @doctors.near(params[:address])
     end
@@ -37,13 +36,6 @@ class DoctorsController < ApplicationController
       authorize @appointment
       authorize @doctor
 
-      if @doctor.reviews.count > 0
-        sumofreviews = 0
-        @doctor.reviews.each do |review|
-          sumofreviews += review.rating
-        end
-        @averagerating = sumofreviews / @doctor.reviews.count
-      end
 
       counter = 0
       sumofreviews = 0
