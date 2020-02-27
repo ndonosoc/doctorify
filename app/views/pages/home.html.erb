@@ -5,30 +5,10 @@
   <meta name="Keywords" content="Doctors directory, ginecologist, dentist, odontologist, radiology, orthopedist, dermatology, nutritionist, psychology">
 </head>
 <body>
-  <div class="main-container" style="background-image: url('https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
-    <div class="container">
-      <h1>Book an appointment. <strong>Feel better</strong></h1>
-      <div class="form">
-        <div class="form-group col-sm-12 col-md-4 col-form-label">
-          <label for="specializationInput">I am looking for</label>
-          <% User.specializations.each do |specialization| %>
-
-          <% end %>
-          <input type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization">
-        </div>
-        <div class="form-group col-sm-12 col-md-4 col-form-label">
-          <label for="locationInput">Location</label>
-          <input type="text" class="form-control" id="locationInput" placeholder="Palermo Soho, Buenos Aires">
-        </div>
-        <div class="form-group col-sm-12 col-md-4 col-form-label">
-        <%= link_to "Find doctors", users_path(specialization: "", location:""), class: "btn btn-primary my-4", id:"findDoctors" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "home-card" %>
   <div class="container-home">
     <span>
-    <h2 class="my-4 py-3 text-center">Feel better in 3 steps</h2>
+    <h2 class="my-4 py-3 text-center text-home" style="color:#167FFB">Feel better in 3 steps</h2>
     </span>
   <div class="content">
     <div class="cards-all">

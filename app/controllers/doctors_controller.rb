@@ -13,7 +13,16 @@ skip_before_action :authenticate_user!
       # @doctors.near(params[:location])
     # end
 
+
+    @doctors = policy_scope(User) # .where.not(longitude: nil)
+    @markers = @doctors.map do |doctor|
+      {
+        lat: doctor.latitude,
+        lng: doctor.longitude
+      }
+    end
   end
+
 
 
   #   @doctors = policy_scope(User) # .where.not(longitude: nil)
