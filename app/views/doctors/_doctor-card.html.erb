@@ -16,7 +16,6 @@
         <i class="fas fa-map-marker"></i>
         <span><%= doctor.address %></span>
       </div>
-      <%= link_to "Book now!", new_user_appointment_path(doctor.id), class:"btn btn-primary" %>
     </div>
   </div>
   <% if doctor.photo.attached? %>
