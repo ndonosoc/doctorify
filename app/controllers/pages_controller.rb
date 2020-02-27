@@ -5,8 +5,4 @@ class PagesController < ApplicationController
   def home
     @users = User.where(category: true)
   end
-
-  def test
-
-  end
 end
