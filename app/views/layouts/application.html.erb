@@ -11,6 +11,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
+
     <div class="min-vh-100 d-flex flex-column"> <!-- This div fixes the footer as it shifts the row vision to column -->
       <%= render 'layouts/components/navbar' %>
       <% padding = params[:controller] == "pages" && params[:action] == "home" ? '' : 'pt-5' %>
