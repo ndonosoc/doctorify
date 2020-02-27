@@ -12,6 +12,7 @@ skip_before_action :authenticate_user!
     # if params[:location].present?
       # @doctors.near(params[:location])
     # end
+
   end
 
 
@@ -23,11 +24,13 @@ skip_before_action :authenticate_user!
   #     }
   #   end
   # end
+
   def show
     @doctor = User.find(params[:id])
     @appointment = Appointment.new
     authorize @appointment
     authorize @doctor
   end
+
 end
 
