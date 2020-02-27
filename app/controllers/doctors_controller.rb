@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+skip_before_action :authenticate_user!
 
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
@@ -12,6 +12,13 @@ class DoctorsController < ApplicationController
     # if params[:location].present?
       # @doctors.near(params[:location])
     # end
+  end
+
+  def show
+    @doctor = User.find(params[:id])
+    @appointment = Appointment.new
+    authorize @appointment
+    authorize @doctor
   end
 
 end

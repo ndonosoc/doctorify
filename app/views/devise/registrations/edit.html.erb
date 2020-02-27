@@ -1,120 +1,142 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<div class="container mx-auto">
-      <div class="row col-12 col-md-6 my-3 pt-3">
-        <%= link_to :back do %> <button class="btn btn-primary form-control">Go Back</button> <% end %>
-      </div>
-
-<div class="row mt-3 row-eq-height row">
-  <div class="col-3 mt-3">
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Basic Information</a>
-            <% if current_user.category == true %>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
-            <% end %>
-      <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
-      <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
-        Update
-      </button>
-      <a class="nav-link btn-sm mt-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Delete Account</a>
-</div>
-  </div>
-  <div class="col-9 mt-3">
-    <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
-      <div class="form-groups">
-        <%= f.input :email, required: true, autofocus: true %>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <%= f.input :first_name, required: true, autofocus: true %>
-        </div>
-        <div class="form-group col-md-6">
-          <%= f.input :last_name, required: true, autofocus: true %>
-        </div>
-      </div>
-        <div class="form-groups">
-          <%= f.input :phone_number, required: true, autofocus: true %>
-        </div>
-        <div class="form-groups">
-          <%= f.input :age, required: true, autofocus: true %>
-        </div>
-        <div class="form-groups mb-3">
-          <%= f.input :dni, required: true, autofocus: true %>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <div class="form-groups mb-3">
-          <%= f.input :specialization, required: true, autofocus: true %>
-        </div>
-        <div class="form-groups mb-3">
-          <%= f.input :photo, as: :file %>
-        </div>
-        <div class="form-groups mb-3">
-          <%= f.input :reference_number, required: true, autofocus: true %>
-        </div>
-        <div class="form-groups mb-3">
-          <%= f.input :address, required: true, autofocus: true, input_html: { id: 'address'} %>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-      <div class="row col-12 col-md-6 mb-3">
-        <h1>Password Change</h1>
-      </div>
-      <div class="form-groups mb-3">
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      </div>
-      <div class="form-groups mb-3">
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-        <div class="form-groups mb-3">
-          <p>Unhappy?</p>
-          <%= link_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete do %> <button class="btn btn-primary">Cancel my account</button><% end %>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-update" role="tabpanel" aria-labelledby="v-pills-update-tab">
-
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 my-3 pt-3">
+      <%= link_to "Go Back", :back %>
     </div>
   </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm your changes</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+  <div class="row mt-3 row-eq-height">
+    <div class="col-3 mt-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Basic Information</a>
+        <% if current_user.category == true %>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
+        <% end %>
+        <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
+        <a class="nav-link border border-white rounded" id="v-pills-appointments-tab" data-toggle="pill" href="#v-pills-appointments" role="tab" aria-controls="v-pills-appointments" aria-selected="false">Your Appointments</a>
+        <a class="nav-link border border-white rounded" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">Your Reviews</a>
+        <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
+          Update
         </button>
+        <a class="nav-link btn-sm mt-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Delete Account</a>
       </div>
-      <div class="modal-body">
-      <div class="form-groups mb-3">
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-      </div>
-    <div class="form-actions mb-3">
-      <%= f.button :submit, "Update", class: 'btn btn-primary' %>
     </div>
+    <div class="col-9 mt-3">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-groups">
+            <%= f.input :email, required: true, autofocus: true %>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.input :first_name, required: true, autofocus: true %>
+            </div>
+            <div class="form-group col-md-6">
+              <%= f.input :last_name, required: true, autofocus: true %>
+            </div>
+          </div>
+          <div class="form-groups">
+            <%= f.input :phone_number, required: true, autofocus: true %>
+          </div>
+          <div class="form-groups">
+            <%= f.input :age, required: true, autofocus: true %>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :dni, required: true, autofocus: true %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <div class="form-groups mb-3">
+            <%= f.input :specialization, required: true, autofocus: true %>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :photo, as: :file %>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :reference_number, required: true, autofocus: true %>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :address, required: true, autofocus: true, input_html: { id: 'address'} %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <div class="row col-12 col-md-6 mb-3">
+            <h1>Password Change</h1>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :password,
+            hint: "leave it blank if you don't want to change it",
+            required: false,
+            input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="form-groups mb-3">
+            <%= f.input :password_confirmation,
+            required: false,
+            input_html: { autocomplete: "new-password" } %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <div class="form-groups mb-3">
+            <p>Unhappy?</p>
+            <%= link_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete do %> <button class="btn btn-primary">Cancel my account</button><% end %>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="v-pills-appointments" role="tabpanel" aria-labelledby="v-pills-appointments-tab">
+          <div class="form-groups mb-3">
+            <% current_user.appointments.each do |appointment| %>
+            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %></p>
+            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now %>
+            <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
+          <div class="form-groups mb-3">
+            <ul>
+              <% current_user.reviews.each do |review| %>
+              <% if review.patient == current_user %>
+              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
+              <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm your changes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-groups mb-3">
+            <%= f.input :current_password,
+            hint: "we need your current password to confirm your changes",
+            required: true,
+            input_html: { autocomplete: "current-password" } %>
+          </div>
+          <div class="form-actions mb-3">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <% end %>
 
 
   <% end %>

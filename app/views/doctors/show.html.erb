@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 mb-4">
+      <%= render "profile-card", doctor: @doctor %>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="calendar-warpper">
+        <div class="d-none d-md-block w-100">
+          <img id="map" class="img-fluid w-100" src='https://www.worldeasyguides.com/wp-content/uploads/2014/03/Map-of-Plaza-de-la-Republica-Buenos-Aires.jpg'>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <%= render "profile-info", doctor: @doctor%>
+      <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#newAppointment">
+      Book now!</button>
+      <h2 class="mt-5 mb-3">Reviews</h2>
+      <div>
+        <% if @doctor.rating %>
+          <% @doctor.reviews.each do |review| %>
+            <%= render "review-card", review: review %>
+          <% end %>
+        <% else %>
+          <p>This doctor has not been reviewed yet.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "booking-modal", doctor: @doctor, appointment: @appointment %>

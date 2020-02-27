@@ -7,8 +7,12 @@ const createSubmitUrl = () => {
 }
 
 if (findDoctors) {
-  specializationInput.addEventListener('focus', event => createSubmitUrl())
-  specializationInput.addEventListener('blur', event => createSubmitUrl())
-  locationInput.addEventListener('focus', event => createSubmitUrl())
-  locationInput.addEventListener('blur', event => createSubmitUrl())
+  if (specializationInput) {
+    specializationInput.addEventListener('focus', event => createSubmitUrl())
+    specializationInput.addEventListener('blur', event => createSubmitUrl())
+  }
+  if (locationInput) {
+    locationInput.addEventListener('focus', event => createSubmitUrl())
+    locationInput.addEventListener('blur', event => createSubmitUrl())
+  }
 }

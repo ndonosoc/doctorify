@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light pl-8 fixed-top">
+<nav class="navbar navbar-light bg-light pl-8 flex-grow-0 bg-white">
   <%= render 'layouts/components/navbar_partials/logo_and_brand' %>
   <% if user_signed_in? && current_user.category == false %>
   <%= render 'layouts/components/navbar_partials/search_bar' %>
@@ -12,4 +12,3 @@
   <%= render 'layouts/components/navbar_partials/visitor_links' %>
   <% end %>
 </nav>
-

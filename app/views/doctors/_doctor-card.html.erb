@@ -7,14 +7,14 @@
         <span class="pl-1">3.6</span>
       </div>
     </div>
-    <h2 class="mt-2 mb-2">Dr. Whatever</h2>
+    <h2 class="mt-2 mb-2"><%= link_to user_path(1) do %>Dr. Whatever<% end %></h2>
     <p class="font-weight-light text-jusitfy d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusantium asperiores a expedita aut, iusto nesciunt ipsum dolore aliquam quis aspernatur temporibus eveniet maiores consequatur eius veritatis. Deserunt aliquam, obcaecati.</p>
     <div class="d-flex justify-content-between align-items-end">
       <div class="location">
         <i class="fas fa-map-marker"></i>
         <span>Location</span>
       </div>
-      <%= link_to "Book now!", root_path, class:"btn btn-primary" %>
+      <%= link_to "Book now!", new_user_appointment_path(1), class:"btn btn-primary" %>
     </div>
   </div>
   <img src="https://cdn6.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumbCard.jpg" alt="" class="w-25 d-none d-md-block">
