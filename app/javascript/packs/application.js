@@ -12,6 +12,7 @@ const timepicker = document.querySelector(".timepicker");
 
 if (datepicker) {
   flatpickr(".datepicker", {
+    inline: true,
     altInput: true,
     enableTime: true,
       enable: [ "2020-02-01", "2020-02-02", "2020-02-03", "2020-02-05"]

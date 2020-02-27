@@ -1,21 +1,36 @@
- <div class="main-container container-banner" style="">
-  <div class="container" style="">
+ <div class="main-container">
+  <div class="container">
     <h1 class="text-shadow">Book an appointment.
     <br>Feel Better</h1>
-    <div class="form">
-      <div class="form-group col-sm-12 col-md-9 col-form-label">
-        <label for="specializationInput">I am looking for</label>
+
+    <form class="form" action="<%= users_path %>">
+      <div class="form-group col-sm-12 col-md-9 col-form-label my-1">
+        <label for="specializationInput"></label>
         <% User.specializations.each do |specialization| %>
+          <!-- User.specialization() -->
         <% end %>
-        <input type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization">
+        <select type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization" name="specialization">
+          <option>Look for a specialization</option>
+          <option>dentist</option>
+          <option>gynecologist</option>
+          <option>generalist</option>
+          <option>ophtalmologist</option>
+          <option>oncologist</option>
+          <option>traumatologist</option>
+          <option>pediatrician</option>
+          <option>psychiatrist</option>
+          <option>psychologist</option>
+          <option>cardiologist</option>
+          <option>dermatologist</option>
+        </select>
       </div>
       <div class="form-group col-sm-12 col-md-9 col-form-label">
-        <label for="locationInput">Location</label>
-        <input type="text" class="form-control" id="locationInput" placeholder="Palermo Soho, Buenos Aires">
+        <label for="locationInput"></label>
+        <input type="text" class="form-control" id="locationInput" placeholder="Location" name="location">
       </div>
       <div class="form-group col-sm-12 col-md-4 col-form-label">
-        <%= link_to "Find doctors", users_path(specialization: "", location:""), class: "btn btn-primary my-2 w-100", id:"findDoctors" %>
+        <input type="submit" value="Find doctors!" class="btn btn-primary my-2 w-100" id="findDoctors">
       </div>
-    </div>
+    </form>
   </div>
 </div>
