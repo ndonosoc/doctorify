@@ -1,9 +1,17 @@
 // Specific CSS for your home-page
 .main-container {
   background-size: cover;
-  background-position: center;
   padding: 150px 0;
+  background-image: url('https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   color: white;
+}
+
+
+.text-shadow {
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.5);
+  box-shadow: none !important;
+  font-size: 50px;
+  font-weight: bolder;
 }
 
 .container-home {
