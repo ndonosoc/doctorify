@@ -1,11 +1,11 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/themes/material_blue.css'
 import flatpickr from 'flatpickr';
-import { initMapbox } from '../plugins/init_mapbox';
+// import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
 
-initMapbox();
+// initMapbox();
 
 const datepicker = document.querySelector(".datepicker");
 const timepicker = document.querySelector(".timepicker");

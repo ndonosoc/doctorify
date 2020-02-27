@@ -1,30 +1,27 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-md-6 my-3 pt-3">
-      <%= link_to "Go Back", :back %>
-    </div>
-  </div>
   <div class="row mt-3 row-eq-height">
     <div class="col-3 mt-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Basic Information</a>
-        <% if current_user.category == true %>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
-        <% end %>
-        <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
         <a class="nav-link border border-white rounded" id="v-pills-appointments-tab" data-toggle="pill" href="#v-pills-appointments" role="tab" aria-controls="v-pills-appointments" aria-selected="false">Your Appointments</a>
         <a class="nav-link border border-white rounded" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">Your Reviews</a>
+        <% if current_user.category == true %>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Practise Information</a>
+        <a class="nav-link" id="v-pills-reviewsreceived-tab" data-toggle="pill" href="#v-pills-reviewsreceived" role="tab" aria-controls="v-pills-reviewsreceived" aria-selected="false">Reviews Received</a>
+        <a class="nav-link" id="v-pills-patients-tab" data-toggle="pill" href="#v-pills-patients" role="tab" aria-controls="v-pills-patients" aria-selected="false">Your Patients</a>
+        <% end %>
+        <a class="nav-link border border-white rounded" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Password Change</a>
         <button type="button" class="btn btn-dark form-control my-3" data-toggle="modal" data-target="#exampleModal">
           Update
         </button>
-        <a class="nav-link btn-sm mt-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Delete Account</a>
       </div>
     </div>
     <div class="col-9 mt-3">
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <% if current_user.dni == "" || current_user.age == "" || current_user.first_name == "" || current_user.last_name == "" || current_user.dni == nil || current_user.age == nil || current_user.first_name == nil || current_user.last_name == nil %>
+            <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
+            <% end %>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
           <div class="form-groups">
@@ -49,17 +46,26 @@
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <% if current_user.specialization == "" || current_user.photo == "" || current_user.reference_number == "" || current_user.address == "" || current_user.specialization == nil || current_user.photo == nil || current_user.reference_number == nil || current_user.address == nil %>
+              <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
+            <% end %>
           <div class="form-groups mb-3">
-            <%= f.input :specialization, required: true, autofocus: true %>
+            <%= f.input :specialization, as: :select, required: true, autofocus: true, collection: %w(dentist gynecologist generalist ophtalmologist oncologist traumatologist pediatrician psychiatrist psychologist cardiologist dermatologist ) %>
           </div>
           <div class="form-groups mb-3">
+            <% if current_user.photo.attached? %>
+            <p>Current Photo:</p>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
+            <%= f.input :photo, label: "Change photo", as: :file %>
+            <% else %>
             <%= f.input :photo, as: :file %>
+            <% end %>
           </div>
           <div class="form-groups mb-3">
             <%= f.input :reference_number, required: true, autofocus: true %>
           </div>
           <div class="form-groups mb-3">
-            <%= f.input :address, required: true, autofocus: true, input_html: { id: "address" } %>
+            <%= f.input :address, input_html: { id: 'address'} %>
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -78,29 +84,56 @@
             input_html: { autocomplete: "new-password" } %>
           </div>
         </div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-          <div class="form-groups mb-3">
-            <p>Unhappy?</p>
-            <%= link_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete do %> <button class="btn btn-primary">Cancel my account</button><% end %>
-          </div>
-        </div>
         <div class="tab-pane fade show" id="v-pills-appointments" role="tabpanel" aria-labelledby="v-pills-appointments-tab">
           <div class="form-groups mb-3">
+            <% if current_user.appointments.empty? %>
+            <p>You haven't booked any appointment yet!</p>
+            <% end %>
             <% current_user.appointments.each do |appointment| %>
-            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %></p>
-            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now %>
+            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %>
+            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
             <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+            <% else %>
+            You already reviewed this appointment!
             <% end %>
             <% end %>
+            </p>
           </div>
         </div>
         <div class="tab-pane fade show" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
           <div class="form-groups mb-3">
+            <% if current_user.reviews.select(patient: current_user).empty? %>
+            <p>You haven't given any reviews yet!</p>
+            <% end %>
             <ul>
               <% current_user.reviews.each do |review| %>
-              <% if review.patient == current_user %>
-              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
+                  <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
               <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="v-pills-reviewsreceived" role="tabpanel" aria-labelledby="v-pills-reviewsreceived-tab">
+          <div class="form-groups mb-3">
+            <% if current_user.reviews.select(doctor: current_user).empty? %>
+              <p>You haven't received any reviews yet!</p>
+            <% end %>
+            <ul>
+              <% current_user.reviews.each do |review| %>
+              <% if review.doctor == current_user %>
+              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> by patient <%= review.patient.last_name %></li>
+              <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="v-pills-patients" role="tabpanel" aria-labelledby="v-pills-patients-tab">
+          <div class="form-groups mb-3">
+            <% if current_user.bookings.empty? %>
+              <p>You haven't received any patients yet!</p>
+            <% end %>
+            <ul>
+              <% current_user.bookings.each do |booking| %>
+              <li>You are seeing patient <%= booking.patient.first_name %> <%= booking.patient.last_name %> on <%= booking.appointment_date %></li>
               <% end %>
             </ul>
           </div>
@@ -132,12 +165,8 @@
       </div>
     </div>
   </div>
-
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
   <% end %>
-
-
   <% end %>
 </div>
