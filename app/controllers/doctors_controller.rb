@@ -12,14 +12,18 @@ skip_before_action :authenticate_user!
     # if params[:location].present?
       # @doctors.near(params[:location])
     # end
-    @doctors = policy_scope(User) # .where.not(longitude: nil)
-    @markers = @doctors.map do |doctor|
-      {
-        lat: doctor.latitude,
-        lng: doctor.longitude
-      }
-    end
+
   end
+
+
+  #   @doctors = policy_scope(User) # .where.not(longitude: nil)
+  #   @markers = @doctors.map do |doctor|
+  #     {
+  #       lat: doctor.latitude,
+  #       lng: doctor.longitude
+  #     }
+  #   end
+  # end
 
   def show
     @doctor = User.find(params[:id])
