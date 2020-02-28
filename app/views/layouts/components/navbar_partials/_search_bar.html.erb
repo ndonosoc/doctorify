@@ -1,7 +1,7 @@
-   <form class="form d-flex" style="font-size: 6px;" action="<%= users_path %>">
+   <form class="form d-flex" style="font-size: 12px;" action="<%= users_path %>">
       <div class="form-group">
         <label for="locationInput"></label>
-                    <input type="hidden" name="user[address]" id="addressValue" value="<%= current_user.address.nil? ? '' : current_user.address %>">
+                    <input type="hidden" name="user[address]" id="addressValue" value="">
         <input type="text" class="form-control" style="font-size: 14px;" placeholder="Location" name="address" id="address">
       </div>
       <div class="form-group">
