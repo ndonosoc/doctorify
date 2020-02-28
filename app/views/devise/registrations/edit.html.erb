@@ -65,8 +65,8 @@
             <%= f.input :reference_number, required: true, autofocus: true %>
           </div>
           <div class="form-groups mb-3">
-            <input type="hidden" name="user[address]" id="addressValue2" value="<%= current_user.address.nil? ? '' : current_user.address %>">
-            <%= f.input :address, input_html: { id: 'address2'} %>
+            <input type="hidden" name="user[address]" id="addressValue" value="<%= current_user.address.nil? ? '' : current_user.address %>">
+            <%= f.input :address, input_html: { id: 'address'} %>
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -90,21 +90,10 @@
             <% if current_user.appointments.empty? %>
             <p>You haven't booked any appointment yet!</p>
             <% end %>
-
             <% current_user.appointments.each do |appointment| %>
-
-                <div class="doctor-card white-card bg-white p-3 border-1 my-3">
-                  <div class="doctor-time d-flex justify-content-between">
-                    <p>
-                    <strong>Appointment: </strong><%= appointment.appointment_date.strftime("%B #{appointment.appointment_date.day.ordinalize} at %-l:%M %P") %>
-                    </p>
-                  <p><strong>With: </strong> Dr. <%= appointment.doctor.last_name.capitalize %>
-                </div>
-                <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
-                    <%= link_to new_user_appointment_review_path(current_user, appointment.id),
-                      class: "text-add btn btn-ghost2 btn-sm" do %>
-                      <i class="fas fa-plus"></i> Add review
-                    <% end %>
+            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %>
+            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
+            <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
             <% elsif appointment.appointment_date > DateTime.now %>
             You still haven't been to this appointment!
             <% else %>
@@ -112,7 +101,6 @@
             <% end %>
             <% end %>
             </p>
-                  </div>
           </div>
         </div>
         <div class="tab-pane fade show" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
@@ -122,18 +110,11 @@
             <% end %>
             <ul>
               <% current_user.reviews.each do |review| %>
-              <div class="doctor-card white-card bg-white p-3 border-1 my-3">
-                  <div class="review d-flex justify-content-between">
-                     <p>
-                    <strong>Review: </strong><%= review.content %><strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %>
-                    </p>
-                  </div>
-              </div>
+                  <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
               <% end %>
             </ul>
           </div>
         </div>
-        <% if current_user.category == true %>
         <div class="tab-pane fade show" id="v-pills-reviewsreceived" role="tabpanel" aria-labelledby="v-pills-reviewsreceived-tab">
           <div class="form-groups mb-3">
             <% if current_user.reviews.select(doctor: current_user).empty? %>
@@ -156,7 +137,6 @@
             <ul>
               <% current_user.bookings.each do |booking| %>
               <li>You are seeing patient <%= booking.patient.first_name %> <%= booking.patient.last_name %> on <%= booking.appointment_date %></li>
-              <% end %>
               <% end %>
             </ul>
           </div>
@@ -193,5 +173,3 @@
   <% end %>
   <% end %>
 </div>
-
-
