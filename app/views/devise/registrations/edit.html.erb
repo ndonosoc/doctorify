@@ -123,13 +123,10 @@
         </div>
         <div class="tab-pane fade show" id="v-pills-reviewsreceived" role="tabpanel" aria-labelledby="v-pills-reviewsreceived-tab">
           <div class="form-groups mb-3">
-            <% if current_user.reviews.select(doctor: current_user).empty? %>
-              <p>You haven't received any reviews yet!</p>
-            <% end %>
             <ul>
-              <% current_user.reviews.each do |review| %>
-              <% if review.doctor == current_user %>
-              <li> <%= review.patient.last_name %> said about you: "<%= review.content %>" and <strong>rated you with:</strong> <%= review.rating %></li>
+              <% current_user.bookings.each do |booking| %>
+              <% if booking.review.doctor == current_user %>
+              <li> <%= booking.review.patient.last_name %> said about you: "<%= booking.review.content %>" and <strong>rated you with:</strong> <%= booking.review.rating %></li>
               <% end %>
               <% end %>
             </ul>
