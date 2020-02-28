@@ -4,7 +4,7 @@
     <h3><%= review.patient.first_name.capitalize %> <%= review.patient.last_name.capitalize %></h3>
     <div class="ratings my-2 d-flex rating">
       <% 5.times do |num| %>
-        <% if num <= review.rating %>
+        <% if num < review.rating %>
           <i class="fas fa-star text-warning"></i>
         <% else %>
           <i class="far fa-star text-warning"></i>

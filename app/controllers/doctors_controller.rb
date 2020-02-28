@@ -45,7 +45,7 @@ class DoctorsController < ApplicationController
       sumofreviews = 0
 
       @doctor.bookings.each do |booking|
-        if booking.review != nil
+        unless booking.review.nil?
           counter += 1
           sumofreviews += booking.review.rating
         end
