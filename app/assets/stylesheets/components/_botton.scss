@@ -16,3 +16,22 @@
 #link {
   color: white;
 }
+
+#link2 {
+  color: #167FFB;
+}
+
+.btn-ghost2 {
+  color: #167FFB;
+  border: 1px solid #167FFB;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  margin-left: 20px;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}

@@ -1,14 +1,15 @@
 
 
 
-   <div class="container">
-      <div class="col-md-6 mx-auto text-center">
+   <div class="container" id="signup">
+
+      <div class="col-md-8 mx-auto text-center">
          <div class="header-title">
-            <h1 class="wv-heading--title">
+            <h1 class="text-shadow-light">
                Check it out — it’s free!
             </h1>
-            <h3 class="wv-heading--subtitle my-3">
-              Sign up, update your information and join a healthier lifestyle!
+            <h3 class="text-shadow-light-sub my-3">
+              Sign up become your heathiest self!
             </h3>
          </div>
       </div>
@@ -34,14 +35,16 @@
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+  <div class="form-actions p-0">
+    <span class="d-flex align-items-center">
+      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+      <%= link_to new_user_session_path do %>
+        <button class = "pl-2 ml-3 btn btn-link" id = "linkblue" type="button">Log in</button>
+      <% end %>
+    </span>
   </div>
   <% end %>
-    <div class="container mx-auto justify-content-center">
 
-<%= render "devise/shared/links" %>
-  </div>
             </div>
          </div>
       </div>
