@@ -125,7 +125,7 @@
           <div class="form-groups mb-3">
             <ul>
               <% current_user.bookings.each do |booking| %>
-              <% if booking.review.doctor == current_user %>
+              <% if booking.review.present? && booking.review.doctor == current_user %>
               <li> <%= booking.review.patient.last_name %> said about you: "<%= booking.review.content %>" and <strong>rated you with:</strong> <%= booking.review.rating %></li>
               <% end %>
               <% end %>
