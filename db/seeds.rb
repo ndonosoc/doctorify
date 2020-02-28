@@ -7,7 +7,7 @@ User.destroy_all
 puts "creating users"
 15.times do
 
-  specialization_array = %w(dentist gynecologist generalist psychologist ophtalmologist)
+  specialization_array = %w(Dentist Gynecologist Generalist Psychologist Ophtalmologist)
      User.create(
       password: "123456",
       first_name: Faker::Name.first_name,
