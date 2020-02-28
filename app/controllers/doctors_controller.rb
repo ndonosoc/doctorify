@@ -2,15 +2,19 @@ class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
-    if params[:specialization].present?
+    if params[:specialization].present? && params[:address].present?
+      sql_query = "specialization ILIKE :specialization"
+      @doctors = policy_scope(User).where(sql_query, specialization: params[:specialization]).near(params[:address])
+
+    elsif params[:specialization].present?
       sql_query = "specialization ILIKE :specialization"
       @doctors = policy_scope(User).where(sql_query, specialization: params[:specialization])
+
+    elsif params[:address].present?
+      @doctors.near(params[:address])
+
     else
       @doctors = policy_scope(User)
-    end
-
-    if params[:address].present?
-      @doctors.near(params[:address])
     end
 
     # @doctors = policy_scope(User) # .where.not(longitude: nil)
