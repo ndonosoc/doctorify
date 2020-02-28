@@ -19,9 +19,15 @@
     <div class="col-9 mt-3">
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-          <% if current_user.dni == "" || current_user.age == "" || current_user.first_name == "" || current_user.last_name == "" || current_user.dni == nil || current_user.age == nil || current_user.first_name == nil || current_user.last_name == nil %>
-            <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
+          <% if current_user.category == true %>
+            <% if current_user.phone_number == "" || current_user.phone_number == nil || current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
+              <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
             <% end %>
+          <% else %>
+            <% if current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
+              <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
+            <% end %>
+          <% end %>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
           <div class="form-groups">

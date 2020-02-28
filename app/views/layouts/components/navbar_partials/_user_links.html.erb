@@ -1,12 +1,14 @@
 <div class="nav-item dropdown">
       <% if user_signed_in? %>
       <% if current_user.category == true %>
-          <% if current_user.dni == "" || current_user.first_name == "" || current_user.last_name == "" || current_user.dni == nil || current_user.first_name == nil || current_user.last_name == nil || current_user.specialization == "" || current_user.photo == "" || current_user.reference_number == "" || current_user.address == "" || current_user.specialization == nil || current_user.photo == nil || current_user.reference_number == nil || current_user.address == nil %>
+        <% if current_user.dni == "" || current_user.first_name == "" || current_user.last_name == "" || current_user.dni == nil || current_user.first_name == nil || current_user.last_name == nil || current_user.specialization == "" || current_user.photo == "" || current_user.reference_number == "" || current_user.address == "" || current_user.specialization == nil || current_user.photo == nil || current_user.reference_number == nil || current_user.address == nil %>
           <strong style="color:red;">!</strong>
-          <% elsif current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
+        <% end %>
+      <% else %>
+        <% if current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
           <strong style="color:red;">!</strong>
-          <% end %>
-          <% end %>
+        <% end %>
+      <% end %>
         <% if current_user.photo.attached? %>
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
         <% else %>
