@@ -20,7 +20,7 @@
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
           <% if current_user.category == true %>
-            <% if current_user.phone_number == "" || current_user.phone_number == nil || current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
+            <% if current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil %>
               <p style="color: red; font-weight: 900;">You're missing some fields to be able to use the platform!</p>
             <% end %>
           <% else %>
@@ -71,8 +71,8 @@
             <%= f.input :reference_number, required: true, autofocus: true %>
           </div>
           <div class="form-groups mb-3">
-            <input type="hidden" name="user[address]" id="addressValue" value="<%= current_user.address.nil? ? '' : current_user.address %>">
-            <%= f.input :address, input_html: { id: 'address'} %>
+            <input type="hidden" name="user[address]" id="addressValue2" value="<%= current_user.address.nil? ? '' : current_user.address %>">
+            <%= f.input :address, input_html: { id: 'address2'} %>
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -97,13 +97,13 @@
             <p>You haven't booked any appointment yet!</p>
             <% end %>
             <% current_user.appointments.each do |appointment| %>
-            <p><%= appointment.appointment_date %> with <%= appointment.doctor.email %>
+            <p><%= appointment.appointment_date.strftime("%B #{appointment.appointment_date.day.ordinalize} at %-l:%M %P")%> with Dr. <%= appointment.doctor.last_name %>
             <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
-            <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id) %>
+            <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id), class: 'btn btn-primary' %>
             <% elsif appointment.appointment_date > DateTime.now %>
-            You still haven't been to this appointment!
+            <strong>You still haven't been to this appointment!</strong>
             <% else %>
-            You already reviewed this appointment!
+            <strong>You already reviewed this appointment!</strong>
             <% end %>
             <% end %>
             </p>
@@ -116,7 +116,7 @@
             <% end %>
             <ul>
               <% current_user.reviews.each do |review| %>
-                  <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> to Dr. <%= review.doctor.last_name %></li>
+                  <li>You said <b>"<%= review.content %>"</b> about Dr. <%= review.doctor.last_name %>. You <strong>rated:</strong> <%= review.rating %></li>
               <% end %>
             </ul>
           </div>
@@ -129,7 +129,7 @@
             <ul>
               <% current_user.reviews.each do |review| %>
               <% if review.doctor == current_user %>
-              <li> "<%= review.content %>" <strong>rated: </strong><%= review.rating %> by patient <%= review.patient.last_name %></li>
+              <li> <%= review.patient.last_name %> said about you: "<%= review.content %>" and <strong>rated you with:</strong> <%= review.rating %></li>
               <% end %>
               <% end %>
             </ul>
@@ -142,7 +142,7 @@
             <% end %>
             <ul>
               <% current_user.bookings.each do |booking| %>
-              <li>You are seeing patient <%= booking.patient.first_name %> <%= booking.patient.last_name %> on <%= booking.appointment_date %></li>
+              <li>You are seeing patient <%= booking.patient.last_name %> on <%= booking.appointment_date.strftime("%B #{booking.appointment_date.day.ordinalize} at %-l:%M %P") %></li>
               <% end %>
             </ul>
           </div>

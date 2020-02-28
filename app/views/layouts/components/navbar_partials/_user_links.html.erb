@@ -1,7 +1,7 @@
 <div class="nav-item dropdown">
       <% if user_signed_in? %>
       <% if current_user.category == true %>
-        <% if current_user.dni == "" || current_user.first_name == "" || current_user.last_name == "" || current_user.dni == nil || current_user.first_name == nil || current_user.last_name == nil || current_user.specialization == "" || current_user.photo == "" || current_user.reference_number == "" || current_user.address == "" || current_user.specialization == nil || current_user.photo == nil || current_user.reference_number == nil || current_user.address == nil %>
+        <% if current_user.dni == "" || current_user.last_name == "" || current_user.dni == nil || current_user.last_name == nil || current_user.specialization == "" || current_user.reference_number == "" || current_user.address == "" || current_user.specialization == nil || current_user.reference_number == nil || current_user.address == nil || current_user.phone_number == nil || current_user.phone_number == "" %>
           <strong style="color:red;">!</strong>
         <% end %>
       <% else %>
