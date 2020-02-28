@@ -21,23 +21,23 @@ class AppointmentsController < ApplicationController
     @appointment.doctor = @doctor
 
     if current_user.last_name == "" || current_user.last_name == nil
-      return redirect_to edit_user_registration_path
+      return redirect_to edit_user_registration_path, alert: "You must set your last name to make an appointment!"
     elsif current_user.dni == "" || current_user.dni == nil
-      return redirect_to edit_user_registration_path
+      return redirect_to edit_user_registration_path, alert: "You must set your DNI to make an appointment!"
     end
 
     @doctor.bookings.each do |appointment|
       if appointment.appointment_date == @appointment.appointment_date
-        return redirect_to user_path(@doctor)
+        return redirect_to user_path(@doctor), alert: "The doctor already has an appointment at that time!"
       end
     end
 
     if @appointment.doctor == current_user
-      redirect_to user_path(@doctor)
+      redirect_to user_path(@doctor), alert: "You can't book an appointment with yourself!"
     elsif @appointment.save
       redirect_to edit_user_registration_path
     else
-      redirect_to user_path(@doctor)
+      redirect_to user_path(@doctor), alert: "Something went wrong."
     end
   end
 
