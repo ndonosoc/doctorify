@@ -11,7 +11,7 @@ end
 private
 
 def appointment_date_after_current_date
-  if self.appointment_date < DateTime.now - 1
+  if self.appointment_date < DateTime.now - 120.minutes
     return errors.add("#{self.appointment_date} must be after today")
   end
 end

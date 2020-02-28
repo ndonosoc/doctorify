@@ -12,50 +12,21 @@ const datepicker = document.querySelector(".datepicker");
 const timepicker = document.querySelector(".timepicker");
 
 if (datepicker) {
+  // const unavailableDates = JSON.parse(document.querySelector('#unavailable_dates').dataset.unavailable)
+   const weekends = (date) => {
+      return (date.getDay() === 0 || date.getDay() === 6);
+        }
   flatpickr(".datepicker", {
     inline: true,
     altInput: true,
     enableTime: true,
     minDate: 'today',
-    minuteIncrementer: "30",
-    "disable": [
-        function(date) {
-            return (date.getDay() === 0 || date.getDay() === 6);
-        }
-    ],
+    minuteIncrement: 30,
+    minTime: "8:00",
+    maxTime: "20:00",
+    disable: [weekends]
     });
 }
-
-const toggleDateInputs = () => {
-  const dateInput = document.getElementById('appointment_date');
-
-  if (dateInput) {
-    const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
-
-    flatpickr(startDateInput, {
-    minDate: 'today',
-    dateFormat: 'd-m-Y',
-    disable: unvailableDates,
-    onChange: function(selectedDate) {
-      if (selectedDate === '') {
-        dateInput.disabled = true;
-      }
-      let minDate = selectedDates[0];
-      minDate.setDate(minDate.getDate() + 1);
-      endDateCalendar.set('minDate', minDate);
-      endDateInput.disabled = false;
-    }
-  });
-    const endDateCalendar =
-      flatpickr(endDateInput, {
-        dateFormat: 'd-m-Y',
-        disable: unvailableDates,
-        },
-      );
-  }
-};
-
-export { toggleDateInputs }
 
 if (timepicker) {
   flatpickr(".timepicker", {
@@ -69,3 +40,14 @@ if (timepicker) {
 }
 
 initAutocomplete();
+
+// document.querySelector(".numInput.flatpickr-minute").value
+// "00"
+// document.querySelector(".numInput.flatpickr-hour").value
+// "08"
+// document.querySelector(".flatpickr-day.selected").innerText
+// document.querySelector("#new_appointment > div > div > div.flatpickr-months > div > div > select").value
+// (anonymous) @ VM3364:1
+// document.querySelector(".flatpickr-day.selected").innerText
+// "28"
+// ["February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January"]
