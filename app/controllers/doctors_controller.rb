@@ -19,6 +19,7 @@ class DoctorsController < ApplicationController
     end
 
     # @doctors = policy_scope(User) # .where.not(longitude: nil)
+    unless @doctors.empty?
     @markers = @doctors.map do |doctor|
       {
         lat: doctor.latitude,
@@ -26,6 +27,7 @@ class DoctorsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { doctor: doctor })
       }
     end
+  end
   end
 
   def show

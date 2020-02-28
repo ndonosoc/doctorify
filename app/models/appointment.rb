@@ -11,5 +11,5 @@ end
 private
 
 def appointment_date_after_current_date
- errors.add(:appointment_date, "can't be before right now!") if appointment_date < DateTime.now - 120.minutes
+ errors.add(:appointment_date, "can't be before right now!") if appointment_date < DateTime.now - 180.minutes
 end
