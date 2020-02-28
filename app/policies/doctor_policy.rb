@@ -1,7 +1,7 @@
 class DoctorPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(category: true).where.not(latitude: nil)
+      scope.where(category: true).where.not(latitude: nil,longitude: nil, address: nil, specialization: nil, reference_number: nil, first_name: nil, last_name:nil)
     end
   end
 
@@ -13,3 +13,4 @@ class DoctorPolicy < ApplicationPolicy
     true
   end
 end
+
