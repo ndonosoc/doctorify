@@ -2,7 +2,7 @@
     <% if doctor.photo.attached? %>
       <img src="<%= cl_image_path doctor.photo.key %>" class="avatar" />
     <% else %>
-      <img src="https://cdn1.vectorstock.com/i/1000x1000/14/80/doctor-web-icon-therapist-avatar-vector-18531480.jpg" class="avatar" />
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="avatar" />
     <% end %>
   <div class="profile-card-data flex-grow-1">
     <h1><%= doctor.first_name.capitalize %> <%= doctor.last_name.capitalize %></h1>
