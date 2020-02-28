@@ -1,4 +1,6 @@
 require "faker"
+require "open-uri"
+
 puts "Destroying everything"
 Review.destroy_all
 Appointment.destroy_all
@@ -7,8 +9,10 @@ User.destroy_all
 puts "creating users"
 15.times do
 
-  specialization_array = %w(Dentist Gynecologist Generalist Psychologist Ophtalmologist)
-     User.create(
+  puts "creating new user"
+  specialization_array = %w(dentist gynecologist generalist psychologist ophtalmologist)
+     user = User.new(
+
       password: "123456",
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -21,13 +25,17 @@ puts "creating users"
       phone_number: Faker::PhoneNumber.phone_number,
       category: true,
       reference_number: rand(500..1000),
-      )
-  print "."
+    )
+
+    file = URI.open("https://i.pravatar.cc/300")
+    user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+    user.save
+  print "new user created!"
 end
 
 5.times do
 
-    User.create(
+  User.create(
     password: "123456",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -40,7 +48,7 @@ end
     phone_number: Faker::PhoneNumber,
     category: false,
     reference_number: nil,
-    )
+  )
   print "."
 end
 
@@ -59,9 +67,9 @@ puts "creating reviews"
 10.times do
 
     Review.create(
-    rating: rand(1..5),
-    content: Faker::Lorem.sentences(number: 1),
-    appointment_id: Appointment.all.pluck(:id).sample,
+      rating: rand(1..5),
+      content: Faker::Lorem.sentences(number: 1),
+      appointment_id: Appointment.all.pluck(:id).sample,
     )
   print "."
 end
