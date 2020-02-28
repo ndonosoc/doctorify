@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :skip_authorization!, only: [:index, :show]
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
     if params[:specialization].present? && params[:address].present?
@@ -45,7 +46,7 @@ class DoctorsController < ApplicationController
       sumofreviews = 0
 
       @doctor.bookings.each do |booking|
-        unless booking.review.nil?
+        if booking.review != nil
           counter += 1
           sumofreviews += booking.review.rating
         end
