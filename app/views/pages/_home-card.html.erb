@@ -11,22 +11,23 @@
         <% end %>
         <select type="text" class="form-control" id="specializationInput" placeholder="Look for a specialization" name="specialization">
           <option>Look for a specialization</option>
-          <option>dentist</option>
-          <option>gynecologist</option>
-          <option>generalist</option>
-          <option>ophtalmologist</option>
-          <option>oncologist</option>
-          <option>traumatologist</option>
-          <option>pediatrician</option>
-          <option>psychiatrist</option>
-          <option>psychologist</option>
-          <option>cardiologist</option>
-          <option>dermatologist</option>
+          <option>Dentist</option>
+          <option>Gynecologist</option>
+          <option>Generalist</option>
+          <option>Ophtalmologist</option>
+          <option>Oncologist</option>
+          <option>Traumatologist</option>
+          <option>Pediatrician</option>
+          <option>Psychiatrist</option>
+          <option>Psychologist</option>
+          <option>Cardiologist</option>
+          <option>Dermatologist</option>
         </select>
       </div>
       <div class="form-group col-sm-12 col-md-9 col-form-label">
         <label for="locationInput"></label>
-        <input type="text" class="form-control" id="locationInput" placeholder="Location" name="address">
+        <input type="hidden" name="user[address]" id="addressValue" value="">
+        <input type="text" class="form-control" id="address" placeholder="Location" name="address">
       </div>
       <div class="form-group col-sm-12 col-md-4 col-form-label">
         <input type="submit" value="Find doctors!" class="btn btn-primary my-2 w-100" id="findDoctors">

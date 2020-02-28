@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :skip_authorization, only: [:index, :show]
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
     if params[:specialization].present? && params[:address].present?
@@ -18,6 +19,7 @@ class DoctorsController < ApplicationController
     end
 
     # @doctors = policy_scope(User) # .where.not(longitude: nil)
+    unless @doctors.empty?
     @markers = @doctors.map do |doctor|
       {
         lat: doctor.latitude,
@@ -25,6 +27,7 @@ class DoctorsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { doctor: doctor })
       }
     end
+  end
   end
 
   def show
