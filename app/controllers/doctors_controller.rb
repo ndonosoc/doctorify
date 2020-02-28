@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :skip_authorization!, only: [:index, :show]
+  before_action :skip_authorization, only: [:index, :show]
   def index
     @doctors = policy_scope(User).order(created_at: :desc)
     if params[:specialization].present? && params[:address].present?
