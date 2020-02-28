@@ -136,12 +136,13 @@
           <div class="form-groups mb-3">
             <% if current_user.bookings.empty? %>
               <p>You haven't received any patients yet!</p>
-            <% end %>
+            <% else %>
             <ul>
               <% current_user.bookings.each do |booking| %>
               <li>You are seeing patient <%= booking.patient.last_name %> on <%= booking.appointment_date.strftime("%B #{booking.appointment_date.day.ordinalize} at %-l:%M %P") %></li>
               <% end %>
             </ul>
+            <% end %>
           </div>
         </div>
       </div>
