@@ -5,9 +5,9 @@ Appointment.destroy_all
 User.destroy_all
 
 puts "creating users"
-5.times do
+15.times do
 
-  specialization_array = %w(dentist gynecologist generalist)
+  specialization_array = %w(dentist gynecologist generalist psychologist ophtalmologist)
      User.create(
       password: "123456",
       first_name: Faker::Name.first_name,

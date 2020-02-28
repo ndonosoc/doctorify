@@ -1,11 +1,32 @@
-<div>
-<span class="">
-  <form class="form d-flex" action="<%= users_path %>">
-  <input name="address" type="text" class="navbar-toggler" id="locationInput" placeholder="Find your next physician!" style="background-color: white; font-size: 12px;">
-<%= link_to users_path(location:""), class: "btn btn-primary", id:"findDoctors" do %>
-<i class="fas fa-search"></i>
-<% end %>
-</form>
-</span>
-</div>
+   <form class="form d-flex" style="font-size: 6px;" action="<%= users_path %>">
+      <div class="form-group">
+        <label for="locationInput"></label>
+        <input type="text" class="form-control" style="font-size: 14px;" placeholder="Location" name="address">
+      </div>
+      <div class="form-group">
+        <label for="specializationInput"></label>
+        <% User.specializations.each do |specialization| %>
+          <!-- User.specialization() -->
+        <% end %>
+        <select type="text" class="form-control" style="font-size: 14px" placeholder="specialization" name="specialization">
+          <option>Specialization</option>
+          <option>dentist</option>
+          <option>gynecologist</option>
+          <option>generalist</option>
+          <option>ophtalmologist</option>
+          <option>oncologist</option>
+          <option>traumatologist</option>
+          <option>pediatrician</option>
+          <option>psychiatrist</option>
+          <option>psychologist</option>
+          <option>cardiologist</option>
+          <option>dermatologist</option>
+        </select>
+      </div>
+      <div class="">
+          <input type="submit" value="" class="btn btn-link" id="findDoctors">
+      </div>
+
+    </form>
+
 
