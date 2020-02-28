@@ -1,9 +1,11 @@
-<span class="d-flex align-items-center">
-  <%= link_to new_user_session_path do %>
-    <button class="btn btn-light btn-sm border rounded-lg" type="button">log in</button>
-  <% end %>
+<span class="d-flex align-items-center justify-content-end">
   <%= link_to new_user_registration_path do %>
-    <button class="btn btn-light ml-3 border rounded-lg" type="button">Sign up</button>
+    <button class="btn btn-outline-light" type="button">Sign up</button>
   <% end %>
-  <%= link_to "I'm a doctor", new_user_registration_path(doctor: "true"), class: "pl-2 ml-3 btn btn-outline-light" %>
+  <%= link_to new_user_session_path do %>
+    <button class = "pl-2 ml-3 btn btn-link" id = "link" type="button">Log in</button>
+  <% end %>
+  <%= link_to new_user_registration_path(doctor: "true") do %>
+  <button class = "pl-2 ml-3 btn btn-link" id = "link" type="button" >I'm a doctor</button>
+  <% end %>
 </span>
