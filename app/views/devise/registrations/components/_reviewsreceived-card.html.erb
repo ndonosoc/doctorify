@@ -1,0 +1,11 @@
+<% if booking.review.present? && booking.review.doctor == current_user %>
+  <div class="date">
+    <%= booking.review.rating %>
+  </div>
+  <div class="doctor">
+    <%= booking.patient.last_name %>
+  </div>
+  <div class="review">
+      "<i><%= booking.review.content %></i>"
+  </div>
+<% end %>
