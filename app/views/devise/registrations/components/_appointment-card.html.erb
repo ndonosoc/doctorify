@@ -1,0 +1,15 @@
+  <div class="date">
+    <%= appointment.appointment_date.strftime("%B #{appointment.appointment_date.day.ordinalize} at %-l:%M %P")%>
+  </div>
+  <div class="doctor">
+    Dr. <%= appointment.doctor.last_name %>
+  </div>
+  <div class="review">
+    <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
+      <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id), class: 'btn btn-sm btn-primary' %>
+    <% elsif appointment.appointment_date > DateTime.now %>
+      <strong>You still haven't been to this appointment!</strong>
+    <% else %>
+      "<i><%= appointment.review.content %></i>"
+    <% end %>
+  </div>
