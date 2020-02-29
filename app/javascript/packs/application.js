@@ -6,8 +6,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 import {initAutocomplete} from '../plugins/init_autocomplete';
 import {initAutocomplete2} from '../plugins/init_autocomplete';
 import { addressInputFakeSelector } from '../plugins/algolia_fix';
+import { buttonDisabler } from '../plugins/button_disabler';
 
 initMapbox();
+buttonDisabler();
 
 const datepicker = document.querySelector(".datepicker");
 const timepicker = document.querySelector(".timepicker");
@@ -24,8 +26,8 @@ if (datepicker) {
     minDate: 'today',
     minuteIncrement: 30,
     minTime: "8:00",
-    maxTime: "20:00",
-    disable: [weekends]
+    maxTime: "20:00"
+    // disable: [weekends]
     });
 }
 
@@ -53,3 +55,6 @@ initAutocomplete2();
 // document.querySelector(".flatpickr-day.selected").innerText
 // "28"
 // ["February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January"]
+
+
+
