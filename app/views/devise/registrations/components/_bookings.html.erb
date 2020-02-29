@@ -1,0 +1,13 @@
+  <div class="date">
+    <%= booking.appointment_date.strftime("%B #{booking.appointment_date.day.ordinalize} at %-l:%M %P")%>
+  </div>
+  <div class="doctor">
+    <%= booking.patient.last_name %>
+  </div>
+  <div class="review">
+    <% if !booking.review.nil? %>
+      "<i><%= booking.review.content %></i>"
+    <% else %>
+      You haven't been reviewed yet.
+    <% end %>
+  </div>
