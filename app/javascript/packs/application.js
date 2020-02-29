@@ -7,6 +7,7 @@ import {initAutocomplete} from '../plugins/init_autocomplete';
 import {initAutocomplete2} from '../plugins/init_autocomplete';
 import { addressInputFakeSelector } from '../plugins/algolia_fix';
 import { buttonDisabler } from '../plugins/button_disabler';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 initMapbox();
 buttonDisabler();
