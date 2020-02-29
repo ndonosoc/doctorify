@@ -1,0 +1,50 @@
+.appointments {
+  margin: 0 auto;
+  padding: 8px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+  "header header header"
+  "main main main";
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 8px;
+  grid-gap: 8px;
+  grid-auto-rows: minmax(15px, 30px);
+
+  .date {
+    grid-column: 1;
+  }
+
+  .doctor {
+    grid-column: 2;
+  }
+
+  .review {
+    grid-column: 3;
+  }
+
+  .datetitle {
+    grid-area: header;
+    grid-column: 1;
+    justify-self: center;
+    font-weight: 900;
+  }
+
+  .doctortitle {
+    grid-area: header;
+    grid-column: 2;
+    justify-self: center;
+    font-weight: 900;
+  }
+
+  .reviewtitle {
+    grid-area: header;
+    grid-column: 3;
+    justify-self: center;
+    font-weight: 900;
+  }
+
+}

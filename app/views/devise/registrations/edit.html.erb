@@ -96,17 +96,20 @@
             <% if current_user.appointments.empty? %>
             <p>You haven't booked any appointment yet!</p>
             <% end %>
+            <div class="appointments">
+              <div class="datetitle">
+                Date
+              </div>
+              <div class="doctortitle">
+                Doctor
+              </div>
+              <div class="reviewtitle">
+                Review
+              </div>
             <% current_user.appointments.each do |appointment| %>
-            <p><%= appointment.appointment_date.strftime("%B #{appointment.appointment_date.day.ordinalize} at %-l:%M %P")%> with Dr. <%= appointment.doctor.last_name %>
-            <% if appointment.patient == current_user && appointment.appointment_date < DateTime.now && appointment.review == nil %>
-            <%= link_to "Add review", new_user_appointment_review_path(current_user, appointment.id), class: 'btn btn-primary' %>
-            <% elsif appointment.appointment_date > DateTime.now %>
-            <strong>You still haven't been to this appointment!</strong>
-            <% else %>
-            <strong>You already reviewed this appointment!</strong>
+            <%= render "devise/registrations/components/appointment-card", appointment: appointment %>
             <% end %>
-            <% end %>
-            </p>
+            </div>
           </div>
         </div>
         <div class="tab-pane fade show" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-reviews-tab">
